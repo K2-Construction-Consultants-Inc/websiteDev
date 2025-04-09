@@ -96,7 +96,7 @@
           <a
             href="#"
             class="btn btn-large"
-            onclick="showGeneralContactModal()"
+            onclick="window.showProjectPerformanceModal(); return false;"
             >Contact Us</a
           >
         </div>
@@ -109,12 +109,15 @@
     <!-- Include floating contact button -->
     <div id="floatingContact"></div>
 
-    <!-- Contact Form Modals -->
-    <div id="generalContactModal"></div>
+    <!-- Project Performance Contact Form Modal -->
+    <div id="projectPerformanceContactModal"></div>
 
     <!-- Load scripts -->
     <script src="js/main.js"></script>
+    <script src="js/storage-helper.js"></script>
+    <script src="js/content-cache.js"></script>
     <script src="js/loader.js"></script>
+    <script src="js/modal.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const pageKey = document.body.getAttribute('data-page');

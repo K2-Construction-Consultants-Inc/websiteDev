@@ -1,0 +1,49 @@
+<div class="modal-overlay" id="dataTransformationContactModal">
+  <div class="modal-container">
+    <form
+      id="dataTransformationContactForm"
+      onsubmit="return window.handleDataTransformationFormSubmit(event)"
+    >
+      <h2>Contact Us - Data Transformation</h2>
+      <div class="form-group">
+        <label for="dataTransformationName" class="required">Name</label>
+        <input type="text" id="dataTransformationName" name="name" required />
+      </div>
+
+      <div class="form-group">
+        <label for="dataTransformationEmail" class="required">Email</label>
+        <input type="email" id="dataTransformationEmail" name="email" required />
+      </div>
+
+      <div class="form-group">
+        <label for="dataTransformationCompany">Company</label>
+        <input type="text" id="dataTransformationCompany" name="company" />
+      </div>
+
+      <div class="form-group">
+        <label for="dataTransformationMessage" class="required">Message</label>
+        <textarea
+          id="dataTransformationMessage"
+          name="message"
+          placeholder="How can we help you with Data Transformation?"
+          required
+        ></textarea>
+      </div>
+
+      <div class="form-actions">
+        <button
+          type="button"
+          class="btn-secondary"
+          onclick="ModalSystem.hideModal(this.closest('.modal-overlay'))"
+        >
+          Cancel
+        </button>
+        <button type="submit" class="btn-primary">Send Message</button>
+      </div>
+
+      <div id="dataTransformationFormSuccess" class="form-success">
+        Thank you for your message! We'll be in touch shortly.
+      </div>
+    </form>
+  </div>
+</div> 

@@ -2,96 +2,94 @@
 const ModalSystem = {
   activeModal: null,
   modalBackdrop: null,
+  initialized: false,
 
   init() {
+    if (this.initialized) {
+      console.log("ModalSystem already initialized, skipping");
+      return;
+    }
+
+    console.log("Initializing ModalSystem...");
+    
     // Create backdrop element if it doesn't exist
-    if (!this.modalBackdrop) {
+    if (!this.modalBackdrop || !document.body.contains(this.modalBackdrop)) {
+      console.log("Creating backdrop element");
       this.modalBackdrop = document.createElement("div");
       this.modalBackdrop.className = "modal-backdrop";
       document.body.appendChild(this.modalBackdrop);
     }
 
-    // Add click event to backdrop
-    this.modalBackdrop.addEventListener("click", (e) => {
+    // --- Event Delegation for Clicks --- 
+    document.body.addEventListener("click", (e) => {
+      // Check for click on backdrop itself
       if (e.target === this.modalBackdrop && this.activeModal) {
         this.hideModal(this.activeModal);
+        return; // Stop further processing
+      }
+      
+      // Check for click on overlay (but not content)
+      if (e.target.classList.contains('modal-overlay') && this.activeModal) {
+           this.hideModal(this.activeModal);
+           return; // Stop further processing
+      }
+      
+      // Check for click on a close button (or element inside it)
+      const closeButton = e.target.closest(".modal-close");
+      if (closeButton && this.activeModal) {
+        e.preventDefault(); // Prevent default if it's a link/button
+        this.hideModal(this.activeModal);
+        return; // Stop further processing
+      }
+      
+      // Check for click on a cancel button within form actions
+      const cancelButton = e.target.closest('.form-actions .btn-secondary');
+      if (cancelButton && this.activeModal) {
+          // Check if the button has the specific onclick for hiding modal
+          const onclickAttr = cancelButton.getAttribute('onclick');
+          if (onclickAttr && onclickAttr.includes('ModalSystem.hideModal')) {
+               e.preventDefault(); // Prevent default if it's a button
+               this.hideModal(this.activeModal);
+               return; // Stop further processing
+          }
       }
     });
 
-    // Add keyboard event listener
+    // --- Keyboard Event Listener --- 
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape" && this.activeModal) {
         this.hideModal(this.activeModal);
       }
     });
 
-    // Initialize close buttons
-    document.querySelectorAll(".modal-close").forEach((button) => {
-      // Remove any existing event listeners
-      const newButton = button.cloneNode(true);
-      button.parentNode.replaceChild(newButton, button);
-
-      // Add new event listener
-      newButton.addEventListener("click", (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        const modal = newButton.closest(".modal-overlay");
-        if (modal) {
-          this.hideModal(modal);
-        }
-      });
-    });
-
-    // Add click event to modal overlays for closing when clicking outside
-    document.querySelectorAll(".modal-overlay").forEach((modal) => {
-      // Remove existing event listeners
-      const newModal = modal.cloneNode(true);
-      modal.parentNode.replaceChild(newModal, modal);
-
-      // Add new event listener for closing when clicking outside
-      newModal.addEventListener("click", (e) => {
-        // Only close if clicking directly on the overlay (not its children)
-        if (e.target === newModal) {
-          this.hideModal(newModal);
-        }
-      });
-
-      // Prevent clicks on modal container from closing
-      const container = newModal.querySelector(".modal-container");
-      if (container) {
-        container.addEventListener("click", (e) => {
-          e.stopPropagation();
-        });
-      }
-
-      // Re-add form submit handlers
-      const form = newModal.querySelector("form");
-      if (form) {
-        const formId = form.id;
-        if (formId) {
-          const handlerName = `handle${
-            formId.charAt(0).toUpperCase() + formId.slice(1)
-          }Submit`;
-          if (window[handlerName]) {
-            form.onsubmit = (e) => window[handlerName](e);
-          }
-        }
-      }
-    });
-
-    // Log initialized elements
-    console.log("Modal System Initialized:", {
-      backdrop: this.modalBackdrop,
-      closeButtons: document.querySelectorAll(".modal-close").length,
-      modals: document.querySelectorAll(".modal-overlay").length,
-    });
+    this.initialized = true;
+    console.log("Modal System Initialized with Delegated Events");
   },
 
   showModal(modalId) {
+    console.log(`Attempting to show modal: ${modalId}`);
+    
+    if (!this.initialized) {
+      console.log("ModalSystem not initialized, initializing now...");
+      this.init();
+    }
+    
     const modal = document.getElementById(modalId);
     if (!modal) {
-      console.error(`Modal with id ${modalId} not found`);
+      console.error(`Modal with id ${modalId} not found in the DOM`);
+      console.log("Available modals:", 
+        Array.from(document.querySelectorAll('.modal-overlay'))
+          .map(el => `#${el.id}`)
+          .join(', ') || 'None found');
       return;
+    }
+
+    // Create backdrop if it doesn't exist yet (in case init wasn't fully completed)
+    if (!this.modalBackdrop || !document.body.contains(this.modalBackdrop)) {
+      console.warn("Modal backdrop not found, creating it now");
+      this.modalBackdrop = document.createElement("div");
+      this.modalBackdrop.className = "modal-backdrop";
+      document.body.appendChild(this.modalBackdrop);
     }
 
     // Hide any active modal first
@@ -99,96 +97,151 @@ const ModalSystem = {
       this.hideModal(this.activeModal);
     }
 
-    // Reset modal styles
-    modal.style.display = "flex";
-    modal.style.opacity = "0";
-    modal.style.pointerEvents = "none";
+    // --- Prepare modal and backdrop for transition --- 
+    // Set initial styles before adding .show class
+    modal.style.display = "flex";       // Make it part of the layout
+    modal.style.opacity = "1";          // Set opacity directly
+    modal.style.visibility = "visible"; // Ensure visibility
+    modal.style.pointerEvents = "auto"; // Enable interaction
+    modal.style.zIndex = "9999";        // High z-index
+    
     this.modalBackdrop.style.display = "block";
-    this.modalBackdrop.style.opacity = "0";
+    this.modalBackdrop.style.opacity = "1";
+    this.modalBackdrop.style.visibility = "visible";
+    this.modalBackdrop.style.zIndex = "9998";
 
-    // Force a reflow to ensure the transition works
-    modal.offsetHeight;
-    this.modalBackdrop.offsetHeight;
+    // --- Force Reflow --- 
+    // Ensures the browser applies the initial styles before the transition starts
+    void modal.offsetWidth;
+    void this.modalBackdrop.offsetWidth;
 
-    // Add show class and update styles
-    requestAnimationFrame(() => {
-      modal.classList.add("show");
-      modal.style.opacity = "1";
-      modal.style.pointerEvents = "auto";
-      this.modalBackdrop.classList.add("show");
-      this.modalBackdrop.style.opacity = "1";
-
-      // Ensure modal container is visible
-      const container = modal.querySelector(".modal-container");
-      if (container) {
-        container.style.opacity = "1";
-      }
-
-      // Log modal state for debugging
-      console.log("Modal shown:", {
-        id: modalId,
-        display: modal.style.display,
-        opacity: modal.style.opacity,
-        classList: modal.classList.toString(),
-        container: container
-          ? {
-              opacity: container.style.opacity,
-            }
-          : null,
-      });
-    });
-
+    // Delay adding show class slightly to ensure CSS is ready for transition
     this.activeModal = modal;
-    document.body.style.overflow = "hidden";
+    document.body.style.overflow = "hidden"; // Prevent background scrolling
+    
+    // Also directly set styles on the modal container
+    const container = modal.querySelector('.modal-container');
+    if (container) {
+      container.style.opacity = "1";
+      container.style.visibility = "visible";
+      container.style.transform = "translateY(0)";
+      container.style.zIndex = "10000";
+    }
+    
+    // Use a small timeout to ensure CSS is fully applied before starting transition
+    setTimeout(() => {
+      // --- Trigger Transition by adding .show class --- 
+      modal.classList.add("show");
+      this.modalBackdrop.classList.add("show");
+      console.log(`Modal ${modalId} show transition started`);
+    }, 10);
+
+    console.log(`Modal ${modalId} show triggered.`);
   },
 
   hideModal(modal) {
-    if (!modal) return;
+    if (!modal || !modal.classList.contains('show')) return; // Don't hide if already hidden
 
-    // Remove show class and update styles
-    modal.classList.remove("show");
-    modal.style.opacity = "0";
-    modal.style.pointerEvents = "none";
-    this.modalBackdrop.classList.remove("show");
-    this.modalBackdrop.style.opacity = "0";
-
-    // Hide modal container
-    const container = modal.querySelector(".modal-container");
-    if (container) {
-      container.style.opacity = "0";
+    console.log(`Hiding modal: ${modal.id}`);
+    
+    // Make sure modalBackdrop exists
+    if (this.modalBackdrop) {
+      this.modalBackdrop.classList.remove("show");
+    } else {
+      console.warn("Modal backdrop not found when hiding modal");
     }
+    
+    // Remove show class and update styles for fade-out
+    modal.classList.remove("show");
 
-    // Hide elements after animation completes
+    // NOTE: We rely on the CSS rules for the removal of .show 
+    // to transition opacity back to 0 and transform back.
+    // JS handles setting display:none after transition.
+    modal.style.pointerEvents = "none"; // Disable pointer events immediately
+
+    // Use transitionend event for hiding instead of fixed timeout for reliability
+    const onTransitionEnd = (event) => {
+        // Ensure we're reacting to the overlay's transition and it's hidden
+        // We check opacity via computedStyle as inline style might be transitioning
+        if (event.target === modal && window.getComputedStyle(modal).opacity === '0') { 
+            console.log(`Transition ended for ${modal.id}`);
+            modal.style.display = "none";
+            // Only hide backdrop when the *last* modal is fully hidden
+            if (this.activeModal === modal) { 
+                if (this.modalBackdrop) {
+                  this.modalBackdrop.style.display = "none";
+                }
+                document.body.style.overflow = ""; // Restore background scrolling
+                this.activeModal = null;
+                console.log(`Modal ${modal.id} fully hidden and activeModal reset.`);
+            } else {
+                // This case should ideally not happen if hideModal is called correctly
+                console.log(`Modal ${modal.id} fully hidden, but it wasn't the active one. Clearing activeModal anyway.`);
+                // If we are hiding a modal that isn't the active one (rare), 
+                // still clear activeModal if it matches the one being hidden.
+                if (this.activeModal === modal) { 
+                    this.activeModal = null;
+                    document.body.style.overflow = ""; 
+                }
+                // If another modal became active in the meantime, don't hide the backdrop.
+                if (!this.activeModal && this.modalBackdrop) {
+                    this.modalBackdrop.style.display = "none";
+                }
+            }
+            modal.removeEventListener('transitionend', onTransitionEnd);
+        }
+    };
+    // Listen specifically for the opacity transition
+    modal.addEventListener('transitionend', onTransitionEnd);
+
+    // Fallback timeout remains a good safety measure - increased to 500ms for reliability
     setTimeout(() => {
-      modal.style.display = "none";
-      this.modalBackdrop.style.display = "none";
-      document.body.style.overflow = "";
-    }, 300);
-
-    this.activeModal = null;
+        // Check if display is still not 'none' (transitionend might not have fired)
+        if (modal.style.display !== 'none') { 
+            console.log(`Transitionend fallback triggered for ${modal.id} (this is normal in some browsers)`);
+            modal.style.display = 'none';
+            // Perform cleanup similar to transitionend handler
+            if (this.activeModal === modal) {
+                if (this.modalBackdrop) {
+                  this.modalBackdrop.style.display = 'none';
+                }
+                document.body.style.overflow = '';
+                this.activeModal = null;
+            } else if (!this.activeModal && this.modalBackdrop) {
+                this.modalBackdrop.style.display = 'none'; // Hide backdrop if no other modal is active
+            }
+            modal.removeEventListener('transitionend', onTransitionEnd);
+        }
+    }, 500); // Increased timeout for reliability
   },
 };
 
 // Show contact form modals
 function showGeneralModal() {
+  console.log("showGeneralModal called");
   ModalSystem.showModal("generalContactModal");
 }
 
-function showPlanningModal() {
-  ModalSystem.showModal("planningContactForm");
+function showProjectPerformanceModal() {
+  console.log("showProjectPerformanceModal called");
+  ModalSystem.showModal("projectPerformanceContactModal");
 }
 
-function showProcessAnalyticsModal() {
-  ModalSystem.showModal("processAnalyticsContactForm");
+function showDataTransformationModal() {
+  console.log("showDataTransformationModal called");
+  ModalSystem.showModal("dataTransformationContactModal");
 }
 
-function showClaimsModal() {
-  ModalSystem.showModal("claimsContactForm");
+function showCyberSecurityModal() {
+  console.log("showCyberSecurityModal called");
+  ModalSystem.showModal("cyberSecurityContactModal");
 }
 
-function showEVMSModal() {
-  ModalSystem.showModal("evmsContactForm");
-}
+// Explicitly attach modal functions to window object to ensure they're globally available
+window.showGeneralModal = showGeneralModal;
+window.showProjectPerformanceModal = showProjectPerformanceModal;
+window.showDataTransformationModal = showDataTransformationModal;
+window.showCyberSecurityModal = showCyberSecurityModal;
 
 // Form handling functions
 window.handleGeneralFormSubmit = function (event) {
@@ -198,88 +251,85 @@ window.handleGeneralFormSubmit = function (event) {
 
   // Here you would typically send the form data to your server
   // For now, we'll just show the success message
-  successMessage.classList.add("show");
+  if (successMessage) {
+    successMessage.classList.add("show");
+  }
   form.reset();
 
   // Hide success message after 3 seconds
   setTimeout(() => {
-    successMessage.classList.remove("show");
+    if (successMessage) {
+      successMessage.classList.remove("show");
+    }
     ModalSystem.hideModal(form.closest(".modal-overlay"));
   }, 3000);
 
   return false;
 };
 
-window.handlePlanningFormSubmit = function (event) {
+window.handleProjectPerformanceFormSubmit = function (event) {
   event.preventDefault();
   const form = event.target;
-  const successMessage = document.getElementById("planningFormSuccess");
+  const successMessage = document.getElementById("projectPerformanceFormSuccess");
 
   // Here you would typically send the form data to your server
   // For now, we'll just show the success message
-  successMessage.classList.add("show");
+  if (successMessage) {
+    successMessage.classList.add("show");
+  }
   form.reset();
 
   // Hide success message after 3 seconds
   setTimeout(() => {
-    successMessage.classList.remove("show");
+    if (successMessage) {
+      successMessage.classList.remove("show");
+    }
     ModalSystem.hideModal(form.closest(".modal-overlay"));
   }, 3000);
 
   return false;
 };
 
-window.handleProcessAnalyticsFormSubmit = function (event) {
+window.handleDataTransformationFormSubmit = function (event) {
   event.preventDefault();
   const form = event.target;
-  const successMessage = document.getElementById("processAnalyticsFormSuccess");
+  const successMessage = document.getElementById("dataTransformationFormSuccess");
 
   // Here you would typically send the form data to your server
   // For now, we'll just show the success message
-  successMessage.classList.add("show");
+  if (successMessage) {
+    successMessage.classList.add("show");
+  }
   form.reset();
 
   // Hide success message after 3 seconds
   setTimeout(() => {
-    successMessage.classList.remove("show");
+    if (successMessage) {
+      successMessage.classList.remove("show");
+    }
     ModalSystem.hideModal(form.closest(".modal-overlay"));
   }, 3000);
 
   return false;
 };
 
-window.handleClaimsFormSubmit = function (event) {
+window.handleCyberSecurityFormSubmit = function (event) {
   event.preventDefault();
   const form = event.target;
-  const successMessage = document.getElementById("claimsFormSuccess");
+  const successMessage = document.getElementById("cyberSecurityFormSuccess");
 
   // Here you would typically send the form data to your server
   // For now, we'll just show the success message
-  successMessage.classList.add("show");
+  if (successMessage) {
+    successMessage.classList.add("show");
+  }
   form.reset();
 
   // Hide success message after 3 seconds
   setTimeout(() => {
-    successMessage.classList.remove("show");
-    ModalSystem.hideModal(form.closest(".modal-overlay"));
-  }, 3000);
-
-  return false;
-};
-
-window.handleEVMSFormSubmit = function (event) {
-  event.preventDefault();
-  const form = event.target;
-  const successMessage = document.getElementById("evmsFormSuccess");
-
-  // Here you would typically send the form data to your server
-  // For now, we'll just show the success message
-  successMessage.classList.add("show");
-  form.reset();
-
-  // Hide success message after 3 seconds
-  setTimeout(() => {
-    successMessage.classList.remove("show");
+    if (successMessage) {
+      successMessage.classList.remove("show");
+    }
     ModalSystem.hideModal(form.closest(".modal-overlay"));
   }, 3000);
 
@@ -289,7 +339,11 @@ window.handleEVMSFormSubmit = function (event) {
 // Floating Contact Button
 window.toggleContactInfo = function () {
   const contactInfo = document.getElementById("contactInfo");
-  contactInfo.classList.toggle("active");
+  if (contactInfo) {
+    contactInfo.classList.toggle("active");
+  } else {
+    console.warn("Contact info element not found");
+  }
 };
 
 // Close contact info when clicking outside
@@ -297,7 +351,8 @@ document.addEventListener("click", function (event) {
   const contactInfo = document.getElementById("contactInfo");
   const floatingContact = event.target.closest(".floating-contact");
 
-  if (!floatingContact && contactInfo.classList.contains("active")) {
+  // Only proceed if contactInfo exists
+  if (contactInfo && !floatingContact && contactInfo.classList.contains("active")) {
     contactInfo.classList.remove("active");
   }
 });
@@ -513,7 +568,7 @@ function animateMetricNumbers() {
 
 // Initialize everything when DOM is loaded
 document.addEventListener("DOMContentLoaded", () => {
-  console.log("DOM Content Loaded");
+  console.log("DOM Content Loaded, initializing ModalSystem...");
   ModalSystem.init();
   initializeCarousel();
   animateMetricNumbers();

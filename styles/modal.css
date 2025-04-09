@@ -9,15 +9,18 @@
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
   display: none;
-  z-index: 1999;
+  z-index: 9998;
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.4s ease;
   cursor: pointer;
+  will-change: opacity;
+  visibility: hidden;
 }
 
 .modal-backdrop.show {
   opacity: 1;
   display: block;
+  visibility: visible;
 }
 
 .modal-overlay {
@@ -29,17 +32,20 @@
   display: none;
   justify-content: center;
   align-items: center;
-  z-index: 2000;
+  z-index: 9999;
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.4s ease;
   pointer-events: none;
   cursor: pointer;
+  will-change: opacity;
+  visibility: hidden;
 }
 
 .modal-overlay.show {
   opacity: 1;
   display: flex !important;
   pointer-events: auto;
+  visibility: visible;
 }
 
 .modal-container {
@@ -52,16 +58,21 @@
   max-height: 90vh;
   overflow-y: auto;
   transform: translateY(-20px);
-  transition: transform 0.3s ease, opacity 0.3s ease;
+  transition: transform 0.4s ease, opacity 0.4s ease;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
   opacity: 0;
   cursor: default;
-  z-index: 2001;
+  z-index: 10000;
+  will-change: transform, opacity;
+  visibility: hidden;
 }
 
 .modal-overlay.show .modal-container {
-  opacity: 1;
-  transform: translateY(0);
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+  visibility: visible !important;
+  display: block !important;
+  pointer-events: auto !important;
 }
 
 /* Stop event propagation for modal content */

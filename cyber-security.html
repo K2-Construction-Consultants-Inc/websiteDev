@@ -104,7 +104,7 @@
         <div class="container">
           <h2 id="ctaTitle"></h2>
           <p id="ctaDescription"></p>
-          <a href="#" class="btn btn-large" onclick="showGeneralContactModal()">Get Started</a>
+          <a href="#" class="btn btn-large" onclick="window.showCyberSecurityModal(); return false;">Get Started</a>
         </div>
       </section>
     </main>
@@ -115,12 +115,15 @@
     <!-- Include floating contact button -->
     <div id="floatingContact"></div>
 
-    <!-- Include General Contact Form Modal -->
-    <div id="generalContactModal"></div>
+    <!-- Include Cyber Security Contact Form Modal -->
+    <div id="cyberSecurityContactModal"></div>
 
     <!-- Load scripts -->
     <script src="js/main.js"></script>
+    <script src="js/storage-helper.js"></script>
+    <script src="js/content-cache.js"></script>
     <script src="js/loader.js"></script>
+    <script src="js/modal.js"></script>
      <!-- Content Loading Script -->
      <script>
         document.addEventListener('DOMContentLoaded', function() {

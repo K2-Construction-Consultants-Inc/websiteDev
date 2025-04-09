@@ -95,7 +95,7 @@
           <a
             href="#"
             class="btn btn-large"
-            onclick="showGeneralContactModal()"
+            onclick="window.showProjectPerformanceModal(); return false;"
             >Get Started</a
           >
         </div>
@@ -108,9 +108,15 @@
     <!-- Include floating contact button -->
     <div id="floatingContact"></div>
 
+    <!-- Project Performance Contact Form Modal -->
+    <div id="projectPerformanceContactModal"></div>
+
     <!-- Load scripts -->
     <script src="js/main.js"></script>
+    <script src="js/storage-helper.js"></script>
+    <script src="js/content-cache.js"></script>
     <script src="js/loader.js"></script>
+    <script src="js/modal.js"></script>
     <!-- Content Loading Script -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {

@@ -96,7 +96,7 @@
         <div class="container">
           <h2 id="ctaTitle"></h2>
           <p id="ctaDescription"></p>
-          <a href="#" class="btn btn-large" onclick="showGeneralContactModal()">Get Started</a>
+          <a href="#" class="btn btn-large" onclick="window.showDataTransformationModal(); return false;">Get Started</a>
         </div>
       </section>
     </main>
@@ -105,10 +105,13 @@
 
     <div id="floatingContact"></div>
 
-    <div id="generalContactModal"></div>
+    <div id="dataTransformationContactModal"></div>
 
     <script src="js/main.js"></script>
+    <script src="js/storage-helper.js"></script>
+    <script src="js/content-cache.js"></script>
     <script src="js/loader.js"></script>
+    <script src="js/modal.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const pageKey = document.body.getAttribute('data-page');

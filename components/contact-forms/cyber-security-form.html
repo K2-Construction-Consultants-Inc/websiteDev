@@ -1,0 +1,49 @@
+<div class="modal-overlay" id="cyberSecurityContactModal">
+  <div class="modal-container">
+    <form
+      id="cyberSecurityContactForm"
+      onsubmit="return window.handleCyberSecurityFormSubmit(event)"
+    >
+      <h2>Contact Us - Cyber Security</h2>
+      <div class="form-group">
+        <label for="cyberSecurityName" class="required">Name</label>
+        <input type="text" id="cyberSecurityName" name="name" required />
+      </div>
+
+      <div class="form-group">
+        <label for="cyberSecurityEmail" class="required">Email</label>
+        <input type="email" id="cyberSecurityEmail" name="email" required />
+      </div>
+
+      <div class="form-group">
+        <label for="cyberSecurityCompany">Company</label>
+        <input type="text" id="cyberSecurityCompany" name="company" />
+      </div>
+
+      <div class="form-group">
+        <label for="cyberSecurityMessage" class="required">Message</label>
+        <textarea
+          id="cyberSecurityMessage"
+          name="message"
+          placeholder="How can we help you with Cyber Security?"
+          required
+        ></textarea>
+      </div>
+
+      <div class="form-actions">
+        <button
+          type="button"
+          class="btn-secondary"
+          onclick="ModalSystem.hideModal(this.closest('.modal-overlay'))"
+        >
+          Cancel
+        </button>
+        <button type="submit" class="btn-primary">Send Message</button>
+      </div>
+
+      <div id="cyberSecurityFormSuccess" class="form-success">
+        Thank you for your message! We'll be in touch shortly.
+      </div>
+    </form>
+  </div>
+</div> 

@@ -1,0 +1,49 @@
+<div class="modal-overlay" id="projectPerformanceContactModal">
+  <div class="modal-container">
+    <form
+      id="projectPerformanceContactForm"
+      onsubmit="return window.handleProjectPerformanceFormSubmit(event)"
+    >
+      <h2>Contact Us - Project Performance</h2>
+      <div class="form-group">
+        <label for="projectPerformanceName" class="required">Name</label>
+        <input type="text" id="projectPerformanceName" name="name" required />
+      </div>
+
+      <div class="form-group">
+        <label for="projectPerformanceEmail" class="required">Email</label>
+        <input type="email" id="projectPerformanceEmail" name="email" required />
+      </div>
+
+      <div class="form-group">
+        <label for="projectPerformanceCompany">Company</label>
+        <input type="text" id="projectPerformanceCompany" name="company" />
+      </div>
+
+      <div class="form-group">
+        <label for="projectPerformanceMessage" class="required">Message</label>
+        <textarea
+          id="projectPerformanceMessage"
+          name="message"
+          placeholder="How can we help you with Project Performance?"
+          required
+        ></textarea>
+      </div>
+
+      <div class="form-actions">
+        <button
+          type="button"
+          class="btn-secondary"
+          onclick="ModalSystem.hideModal(this.closest('.modal-overlay'))"
+        >
+          Cancel
+        </button>
+        <button type="submit" class="btn-primary">Send Message</button>
+      </div>
+
+      <div id="projectPerformanceFormSuccess" class="form-success">
+        Thank you for your message! We'll be in touch shortly.
+      </div>
+    </form>
+  </div>
+</div> 
