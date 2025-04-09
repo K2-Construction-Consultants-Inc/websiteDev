@@ -1,0 +1,69 @@
+<div class="modal-overlay" id="evmsContactForm">
+  <div class="modal-container">
+    <form id="evmsForm" onsubmit="return window.handleEVMSFormSubmit(event)">
+      <h2>Get Started with EVMS</h2>
+      <div class="form-group">
+        <label for="evmsName" class="required">Name</label>
+        <input type="text" id="evmsName" name="name" required />
+      </div>
+
+      <div class="form-group">
+        <label for="evmsEmail" class="required">Email</label>
+        <input type="email" id="evmsEmail" name="email" required />
+      </div>
+
+      <div class="form-group">
+        <label for="evmsCompany" class="required">Company</label>
+        <input type="text" id="evmsCompany" name="company" required />
+      </div>
+
+      <div class="form-group">
+        <label for="evmsService" class="required">EVMS Service Needed</label>
+        <select id="evmsService" name="evmsService" required>
+          <option value="">Select a service</option>
+          <option value="implementation">EVMS Implementation</option>
+          <option value="certification">EVMS Certification Support</option>
+          <option value="training">EVMS Training</option>
+          <option value="assessment">EVMS Assessment</option>
+          <option value="maintenance">EVMS Maintenance Support</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="projectValue">Approximate Project Value</label>
+        <select id="projectValue" name="projectValue">
+          <option value="">Select a range</option>
+          <option value="under5m">Under $5 Million</option>
+          <option value="5m-20m">$5M - $20M</option>
+          <option value="20m-50m">$20M - $50M</option>
+          <option value="50m-100m">$50M - $100M</option>
+          <option value="over100m">Over $100 Million</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="evmsMessage">Additional Details</label>
+        <textarea
+          id="evmsMessage"
+          name="message"
+          placeholder="Tell us about your EVMS needs..."
+        ></textarea>
+      </div>
+
+      <div class="form-actions">
+        <button
+          type="button"
+          class="btn-secondary"
+          onclick="ModalSystem.hideModal(this.closest('.modal-overlay'))"
+        >
+          Cancel
+        </button>
+        <button type="submit" class="btn-primary">Submit Request</button>
+      </div>
+
+      <div id="evmsFormSuccess" class="form-success">
+        Thank you for your interest! We'll be in touch shortly.
+      </div>
+    </form>
+  </div>
+</div>

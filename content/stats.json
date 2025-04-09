@@ -1,0 +1,33 @@
+{
+  "stats": [
+    {
+      "value": 25,
+      "label": "Highly-Experienced Professionals",
+      "image": "images/stats-professionals.jpg",
+      "suffix": "+"
+    },
+    {
+      "value": 34,
+      "label": "Years of Critical Path Consulting Experience",
+      "image": "images/stats-experience.jpg",
+      "suffix": "+"
+    },
+    {
+      "value": 2000,
+      "label": "Public and Private Sector Projects",
+      "image": "images/stats-projects.jpg",
+      "suffix": "+"
+    },
+    {
+      "value": 95,
+      "label": "Repeat Clients",
+      "image": "images/stats-clients.jpg",
+      "suffix": "%"
+    }
+  ],
+  "quote": {
+    "tagline": "K2 Keeps Projects Moving!",
+    "text": "K2 delivered again, ensuring the right framework, structure and implementation of scheduling… by contributing rapidly and early in the planning, design development and early works construction.",
+    "author": "Sr. Vice President, Aviation, for an Engineering News-Record (ENR) Top 15 Contractor"
+  }
+}

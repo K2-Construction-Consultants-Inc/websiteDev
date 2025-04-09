@@ -1,0 +1,171 @@
+<footer class="main-footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-logo">
+        <img
+          src="images/logo-k2-consulting-white.svg"
+          alt="K2 Consulting Logo"
+        />
+      </div>
+      <div class="footer-links">
+        <div class="footer-nav">
+          <h4>Quick Links</h4>
+          <ul>
+            <li>
+              <a href="project-performance.html">Project Performance</a>
+            </li>
+            <li>
+              <a href="data-transformation.html">Data Transformation</a>
+            </li>
+            <li>
+              <a href="cyber-security.html">Cyber Security</a>
+            </li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="leadership.html">About Us</a></li>
+            <li><a href="careers.html">Careers</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-contact">
+        <h4>Contact Us</h4>
+        <p>
+          <i class="fas fa-map-marker-alt"></i> 4330 East-West Highway<br />
+          Suite 320<br />
+          Bethesda, MD 20814
+        </p>
+        <p>
+          <i class="fas fa-phone"></i>
+          <a href="tel:+13016562228">+1 (301) 656-2228</a>
+        </p>
+        <p>
+          <i class="fas fa-envelope"></i>
+          <a href="mailto:info@k2consulting.com">info@k2consulting.com</a>
+        </p>
+        <div class="social-links">
+          <a
+            href="https://www.linkedin.com/company/k2-construction-consultant/"
+            target="_blank"
+            rel="noopener noreferrer"
+            ><i class="fab fa-linkedin"></i
+          ></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 K2 Consulting. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .main-footer {
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 60px 0 30px;
+  }
+
+  .footer-content {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: 40px;
+    margin-bottom: 30px;
+  }
+
+  .footer-logo img {
+    height: 40px;
+    width: auto;
+  }
+
+  .footer-links h4,
+  .footer-contact h4 {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    color: var(--white);
+  }
+
+  .footer-links ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .footer-links li {
+    margin-bottom: 10px;
+  }
+
+  .footer-links a {
+    color: var(--white);
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .footer-links a:hover {
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  .footer-contact p {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .footer-contact a {
+    color: var(--white);
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .footer-contact a:hover {
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  .footer-contact i {
+    width: 20px;
+    text-align: center;
+  }
+
+  .social-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+  }
+
+  .social-links a {
+    color: var(--white);
+    font-size: 1.5rem;
+    transition: transform 0.3s ease, color 0.3s ease;
+  }
+
+  .social-links a:hover {
+    color: rgba(255, 255, 255, 0.8);
+    transform: translateY(-3px);
+  }
+
+  .footer-bottom {
+    text-align: center;
+    padding-top: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  @media (max-width: 768px) {
+    .footer-content {
+      grid-template-columns: 1fr;
+      gap: 30px;
+      text-align: center;
+    }
+
+    .footer-logo {
+      display: flex;
+      justify-content: center;
+    }
+
+    .footer-contact p {
+      justify-content: center;
+    }
+
+    .social-links {
+      justify-content: center;
+    }
+  }
+</style>

@@ -1,0 +1,67 @@
+<div class="modal-overlay" id="generalContactModal">
+  <div class="modal-container">
+    <form
+      id="generalContactForm"
+      onsubmit="return window.handleGeneralFormSubmit(event)"
+    >
+      <h2>Contact Us</h2>
+      <div class="form-group">
+        <label for="generalName" class="required">Name</label>
+        <input type="text" id="generalName" name="name" required />
+      </div>
+
+      <div class="form-group">
+        <label for="generalEmail" class="required">Email</label>
+        <input type="email" id="generalEmail" name="email" required />
+      </div>
+
+      <div class="form-group">
+        <label for="generalCompany">Company</label>
+        <input type="text" id="generalCompany" name="company" />
+      </div>
+
+      <div class="form-group">
+        <label for="generalInterest" class="required">Area of Interest</label>
+        <select id="generalInterest" name="interest" required>
+          <option value="">Select area of interest</option>
+          <option value="planning-scheduling">
+            Project Planning & Scheduling
+          </option>
+          <option value="process-analytics">
+            Process, Analytics, & Technology
+          </option>
+          <option value="claims-management">
+            Claims Avoidance & Management
+          </option>
+          <option value="evms">Earned Value Management Systems</option>
+          <option value="general">General Inquiry</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="generalMessage" class="required">Message</label>
+        <textarea
+          id="generalMessage"
+          name="message"
+          placeholder="How can we help you?"
+          required
+        ></textarea>
+      </div>
+
+      <div class="form-actions">
+        <button
+          type="button"
+          class="btn-secondary"
+          onclick="ModalSystem.hideModal(this.closest('.modal-overlay'))"
+        >
+          Cancel
+        </button>
+        <button type="submit" class="btn-primary">Send Message</button>
+      </div>
+
+      <div id="generalFormSuccess" class="form-success">
+        Thank you for your message! We'll be in touch shortly.
+      </div>
+    </form>
+  </div>
+</div>

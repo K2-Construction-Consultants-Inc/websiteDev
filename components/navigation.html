@@ -1,0 +1,485 @@
+<nav class="main-nav">
+  <div class="nav-container">
+    <div class="nav-logo">
+      <a href="/">
+        <img
+          id="navLogo"
+          src="images/logo-k2-consulting.svg"
+          alt="K2 Consulting Logo"
+        />
+      </a>
+    </div>
+    <ul class="nav-menu" id="navMenu">
+      <li class="dropdown">
+        <a href="#" class="dropbtn">Our Services <i class="fas fa-caret-down"></i></a>
+        <div class="dropdown-content">
+          <div class="dropdown-submenu">
+            <a href="project-performance.html">Project Performance <i class="fas fa-caret-right"></i></a>
+            <div class="dropdown-submenu-content">
+              <a href="planning-scheduling.html">Planning & Scheduling</a>
+              <a href="claims-management.html">Claims Avoidance & Management</a>
+              <a href="evms.html">Earned Value Management System</a>
+              <a href="risk-management.html">Risk Management</a>
+            </div>
+          </div>
+          <div class="dropdown-submenu">
+            <a href="data-transformation.html">Data Transformation <i class="fas fa-caret-right"></i></a>
+            <div class="dropdown-submenu-content">
+                <a href="pmis.html">PMIS</a>
+                <a href="data-analytics.html">Data Analytics</a>
+                <a href="ai-ml.html">AI / ML</a>
+                <a href="vdc.html">Virtual Design & Construction (VDC)</a>
+            </div>
+          </div>
+          <div class="dropdown-submenu">
+             <a href="cyber-security.html">Cyber Security <i class="fas fa-caret-right"></i></a>
+             <div class="dropdown-submenu-content">
+                <a href="assessments-reviews.html">Assessments & Reviews</a>
+                <a href="monitoring-vulnerability.html">Monitoring & Vulnerability Mgmt</a>
+                <a href="audit-reporting.html">Audit & Reporting Compliance</a>
+                <a href="documentation-support.html">Documentation & Support</a>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="leadership.html">About Us</a></li>
+      <li><a href="careers.html">Careers</a></li>
+    </ul>
+    <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+      <i class="fas fa-bars"></i>
+    </button>
+  </div>
+</nav>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const rootPath = document.body.getAttribute("data-root-path") || ".";
+
+    // Update logo path
+    const navLogo = document.getElementById("navLogo");
+    if (navLogo) { // Check if element exists
+        navLogo.src = `${rootPath}/images/logo-k2-consulting.svg`;
+    }
+
+    // Update navigation links
+    const navMenu = document.getElementById("navMenu");
+    if (navMenu) { // Check if element exists
+        navMenu.querySelectorAll("a").forEach((link) => {
+          const href = link.getAttribute("href");
+          // Don't modify placeholder '#' links used for dropdown buttons
+          if (href && href !== "#") {
+             // Ensure the path doesn't double up slashes if rootPath is '.'
+             const separator = rootPath === '.' ? '' : '/';
+             link.href = `${rootPath}${separator}${href}`;
+          }
+        });
+
+        // Add click/touch listeners for mobile dropdowns/submenus
+        setupMobileDropdowns();
+    }
+  });
+
+  function toggleMobileMenu() {
+    const menu = document.querySelector(".nav-menu");
+    if (menu) { menu.classList.toggle("active"); }
+  }
+
+  // Close menu when clicking outside
+  document.addEventListener("click", function (e) {
+    const menu = document.querySelector(".nav-menu");
+    const toggle = document.querySelector(".mobile-menu-toggle");
+    if (menu && toggle && menu.classList.contains("active") && !toggle.contains(e.target) && !menu.contains(e.target)) {
+      menu.classList.remove("active");
+      // Also close any open submenus when closing main mobile menu
+      closeAllMobileSubmenus(menu);
+    }
+  });
+
+  // Close menu when clicking a top-level link (excluding dropdown toggles)
+  document.querySelectorAll(".nav-menu > li > a").forEach((link) => {
+    if (!link.classList.contains('dropbtn')) {
+        link.addEventListener("click", () => {
+            const menu = document.querySelector(".nav-menu");
+            if (menu && menu.classList.contains("active")) {
+                menu.classList.remove("active");
+            }
+        });
+    }
+  });
+
+ function setupMobileDropdowns() {
+     // Handle top-level dropdown toggle
+    const dropbtn = document.querySelector('.nav-menu .dropbtn');
+    if (dropbtn) {
+        dropbtn.addEventListener('click', function(e) {
+            if (window.innerWidth <= 768) { // Only prevent default on mobile
+                e.preventDefault();
+                const parentLi = this.parentElement;
+                parentLi.classList.toggle('active-dropdown');
+                const dropdownContent = parentLi.querySelector('.dropdown-content');
+                if (dropdownContent) {
+                     dropdownContent.style.display = parentLi.classList.contains('active-dropdown') ? 'block' : 'none';
+                }
+                // Close other submenus if opening this one
+                if (parentLi.classList.contains('active-dropdown')) {
+                    closeAllMobileSubmenus(parentLi);
+                }
+            }
+        });
+    }
+
+    // Handle submenu toggles
+    document.querySelectorAll('.dropdown-submenu > a').forEach(submenuLink => {
+        submenuLink.addEventListener('click', function(e) {
+             if (window.innerWidth <= 768) { // Only prevent default on mobile
+                e.preventDefault();
+                const parentSubmenu = this.parentElement;
+                parentSubmenu.classList.toggle('active-submenu');
+                const submenuContent = parentSubmenu.querySelector('.dropdown-submenu-content');
+                if (submenuContent) {
+                    submenuContent.style.display = parentSubmenu.classList.contains('active-submenu') ? 'block' : 'none';
+                }
+                // Close sibling submenus
+                if (parentSubmenu.classList.contains('active-submenu')) {
+                    const siblings = parentSubmenu.parentElement.querySelectorAll('.dropdown-submenu');
+                    siblings.forEach(sib => {
+                        if (sib !== parentSubmenu && sib.classList.contains('active-submenu')) {
+                            sib.classList.remove('active-submenu');
+                            const sibContent = sib.querySelector('.dropdown-submenu-content');
+                            if (sibContent) sibContent.style.display = 'none';
+                        }
+                    });
+                }
+             }
+        });
+    });
+
+     // Close submenu when clicking a link inside it
+     document.querySelectorAll('.dropdown-submenu-content a').forEach(link => {
+         link.addEventListener('click', () => {
+             if (window.innerWidth <= 768) {
+                 const menu = document.querySelector(".nav-menu");
+                 if (menu) menu.classList.remove("active");
+                 closeAllMobileSubmenus(menu);
+             }
+         });
+     });
+ }
+
+ function closeAllMobileSubmenus(parentElement) {
+    if (!parentElement) return;
+    // Close top-level dropdown content if it wasn't the one clicked
+    parentElement.querySelectorAll('.dropdown.active-dropdown').forEach(li => {
+         if (!li.contains(event.target)) { // Don't close if click was inside this dropdown
+            li.classList.remove('active-dropdown');
+            const content = li.querySelector('.dropdown-content');
+            if (content) content.style.display = 'none';
+         }
+    });
+     // Close all nested submenus
+     parentElement.querySelectorAll('.dropdown-submenu.active-submenu').forEach(submenu => {
+         submenu.classList.remove('active-submenu');
+         const submenuContent = submenu.querySelector('.dropdown-submenu-content');
+         if (submenuContent) submenuContent.style.display = 'none';
+     });
+ }
+
+</script>
+
+<style>
+  /* Navigation */
+  .main-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--primary-color);
+    z-index: 1000;
+    height: var(--nav-height);
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    height: 100%;
+  }
+
+  .nav-logo {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-logo img {
+    height: calc(var(--nav-height) - 30px);
+    width: auto;
+    filter: brightness(0) invert(1);
+  }
+
+  .nav-menu {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+  }
+
+  .nav-menu li {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    position: relative; /* Needed for dropdown positioning */
+  }
+
+  .nav-menu > li > a { /* Target only top-level links for underline */
+    color: var(--white);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    padding: 0 5px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+
+  .nav-menu > li > a:hover {
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  .nav-menu > li > a::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: var(--white);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+  }
+
+  .nav-menu > li > a:hover::after {
+    transform: scaleX(1);
+  }
+
+  /* Dropdown Styles */
+  .dropdown {
+    position: relative;
+  }
+  .dropdown .dropbtn {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px; /* Space between text and caret */
+  }
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%; /* Position below the parent */
+    left: 0;
+    background-color: var(--primary-color);
+    min-width: 240px; /* Adjust as needed */
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    padding: 10px 0;
+    border-radius: 0 0 4px 4px;
+    /* Added Transitions */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px); /* Start slightly lower */
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+  }
+   .dropdown:hover .dropdown-content {
+     /* Updated hover state */
+     display: block;
+     opacity: 1;
+     visibility: visible;
+     transform: translateY(0);
+   }
+  .dropdown-content a {
+    color: var(--white);
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    white-space: nowrap;
+    transition: background-color 0.2s ease;
+  }
+  .dropdown-content a:hover {
+    background-color: var(--secondary-color); /* Or another hover color */
+    color: var(--white);
+  }
+
+   /* Submenu Styles */
+  .dropdown-submenu {
+      position: relative; /* Crucial for submenu positioning */
+  }
+  .dropdown-submenu > a {
+      display: flex; /* Align text and caret */
+      justify-content: space-between;
+      align-items: center;
+  }
+  .dropdown-submenu-content {
+      display: none;
+      position: absolute;
+      top: 0;
+      left: 100%; /* Position to the right */
+      background-color: var(--primary-color);
+      min-width: 260px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 2; /* Appear above parent dropdown */
+      padding: 10px 0;
+      border-radius: 4px; /* Rounded corners on all sides */
+      margin-left: 1px; /* Small gap */
+       /* Added Transitions */
+      opacity: 0;
+      visibility: hidden;
+      transform: translateX(10px); /* Start slightly to the right */
+      transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+  }
+  .dropdown-submenu:hover > .dropdown-submenu-content {
+       /* Updated hover state */
+      display: block;
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(0);
+  }
+   .dropdown-submenu-content a {
+     color: var(--white);
+     padding: 12px 16px;
+     text-decoration: none;
+     display: block;
+     white-space: nowrap;
+     transition: background-color 0.2s ease;
+   }
+  .dropdown-submenu-content a:hover {
+      background-color: var(--secondary-color);
+      color: var(--white);
+  }
+  .dropdown-submenu .fa-caret-right {
+      margin-left: 10px;
+      font-size: 0.9em;
+  }
+
+  /* Mobile Menu */
+  .mobile-menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--white);
+    cursor: pointer;
+    padding: 5px;
+    margin: 0;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .main-nav {
+      height: var(--nav-height);
+    }
+
+    .mobile-menu-toggle {
+      display: block;
+    }
+
+    .nav-menu {
+      display: none;
+      position: absolute;
+      top: var(--nav-height);
+      left: 0;
+      right: 0;
+      background-color: var(--primary-color);
+      padding: 10px 0;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      flex-direction: column;
+      gap: 0;
+      height: auto;
+      max-height: calc(100vh - var(--nav-height));
+      overflow-y: auto;
+    }
+
+    .nav-menu.active {
+      display: block;
+    }
+
+    .nav-menu li {
+      height: auto;
+      display: block;
+    }
+
+    .nav-menu > li > a {
+      padding: 15px 20px;
+      height: auto;
+      justify-content: space-between;
+    }
+
+    .nav-menu > li > a::after {
+      display: none;
+    }
+
+    /* Mobile Dropdown Adjustments */
+    .dropdown:hover .dropdown-content,
+    .dropdown-submenu:hover > .dropdown-submenu-content {
+        display: none; /* Disable hover effect on mobile */
+    }
+    .dropdown-content,
+    .dropdown-submenu-content {
+        position: static; /* Remove absolute positioning */
+        box-shadow: none;
+        min-width: 100%;
+        padding: 0;
+        background-color: rgba(0, 0, 0, 0.1); /* Slightly darker bg for nesting */
+        border-radius: 0;
+        /* Ensure JS handles display, remove transition for click */
+        display: none; 
+        opacity: 1; 
+        visibility: visible;
+        transform: none;
+        transition: none; 
+        margin-left: 0;
+    }
+
+     /* Display when active class is added by JS */
+    .dropdown.active-dropdown > .dropdown-content,
+    .dropdown-submenu.active-submenu > .dropdown-submenu-content {
+        display: block;
+        /* Add slight slide-down effect for mobile if desired */
+        /* animation: slideDownMobile 0.3s ease forwards; */ 
+    }
+
+    /* Optional: Keyframes for mobile slide-down */
+    /* @keyframes slideDownMobile {
+        from { max-height: 0; opacity: 0; } 
+        to { max-height: 500px; opacity: 1; }
+    } */
+
+    .nav-logo img {
+      height: calc(var(--nav-height) - 20px);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .nav-container {
+      padding: 0 15px;
+    }
+     .nav-menu > li > a,
+     .dropdown-content a,
+     .dropdown-submenu-content a {
+        font-size: 0.95rem;
+     }
+  }
+</style>

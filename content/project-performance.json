@@ -1,0 +1,249 @@
+{
+  "projectPerformance": {
+    "hero": {
+      "title": "Project Performance",
+      "subtitle": "Ensuring project success through expert planning, execution, and control."
+    },
+    "overview": {
+      "title": "Driving Predictable Project Outcomes",
+      "paragraphs": [
+        "Achieving consistent project success requires a proactive and integrated approach to performance management. K2 Consulting's Project Performance services provide the expertise and tools necessary to keep your projects on track, within budget, and aligned with strategic objectives. We focus on establishing robust control systems, mitigating risks, and optimizing resource utilization throughout the project lifecycle.",
+        "Our team combines deep industry knowledge with proven methodologies in planning, scheduling, cost control, risk management, and claims avoidance. We work collaboratively with your organization to implement best practices, ensuring transparency, accountability, and predictability. From initial feasibility studies to final closeout, we are dedicated to maximizing your project's performance and return on investment."
+      ]
+    },
+    "serviceOfferings": {
+      "title": "Our Project Performance Services",
+      "cards": [
+        {
+          "icon": "fas fa-calendar-check",
+          "title": "Project Planning & Scheduling",
+          "description": "Developing realistic, resource-loaded schedules and maintaining schedule integrity. We utilize industry-standard tools and techniques to ensure your project stays on track.",
+          "link": "planning-scheduling.html"
+        },
+        {
+          "icon": "fas fa-shield-alt",
+          "title": "Claims Avoidance & Management",
+          "description": "Proactive strategies and expert analysis to prevent disputes. When claims arise, we provide objective assessment and support resolution.",
+          "link": "claims-management.html"
+        },
+        {
+          "icon": "fas fa-chart-line",
+          "title": "Earned Value Management System (EVMS)",
+          "description": "Implementing and managing compliant EVMS for integrated performance measurement. Gain clear visibility into cost and schedule performance.",
+          "link": "evms.html"
+        },
+        {
+          "icon": "fas fa-exclamation-triangle",
+          "title": "Risk Management",
+          "description": "Identifying, analyzing, and mitigating project risks to protect objectives. We help you develop proactive response strategies to minimize threats.",
+          "link": "risk-management.html"
+        }
+      ]
+    },
+    "approach": {
+      "title": "Our Integrated Performance Approach",
+      "cards": [
+        { "title": "Baseline Development", "description": "Establishing solid project baselines for scope, schedule, and cost as the foundation for control." },
+        { "title": "Performance Monitoring", "description": "Regular tracking and analysis of progress against baselines using tools like EVMS." },
+        { "title": "Risk & Issue Management", "description": "Proactive identification, assessment, and mitigation of risks and timely resolution of issues." },
+        { "title": "Change Control", "description": "Implementing disciplined processes for managing changes to the project scope, schedule, or budget." },
+        { "title": "Stakeholder Reporting", "description": "Providing clear, concise, and timely performance reports tailored to stakeholder needs." },
+        { "title": "Resource Optimization", "description": "Analyzing resource allocation and utilization to ensure efficiency and prevent overallocation." },
+        { "title": "Quality Assurance Integration", "description": "Ensuring quality metrics and processes are integrated with overall performance management." },
+        { "title": "Technology Leverage", "description": "Utilizing appropriate project management software and tools to enhance efficiency and insight." },
+        { "title": "Continuous Improvement", "description": "Leveraging lessons learned and performance data to enhance future project outcomes and processes." }
+      ]
+    },
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "questions": [
+        { "question": "How do you ensure schedule adherence?", "answer": "Through realistic planning, critical path analysis, proactive monitoring, resource optimization, and effective management of schedule risks and changes." },
+        { "question": "What is the key to effective claims management?", "answer": "Thorough documentation, clear contract understanding, proactive communication, timely issue resolution, and objective analysis are crucial for both avoiding and managing claims." },
+        { "question": "Why is EVMS considered a best practice?", "answer": "EVMS provides an objective, integrated view of project performance by combining scope, schedule, and cost data, enabling early detection of variances and reliable forecasting." },
+        { "question": "How does risk management contribute to project performance?", "answer": "By identifying potential threats and opportunities early, risk management allows teams to develop mitigation strategies, minimize negative impacts, and capitalize on positive events, leading to more predictable outcomes." }
+      ]
+    },
+    "cta": {
+      "title": "Optimize Your Project Performance?",
+      "description": "Contact us to discuss how our comprehensive project performance services can help you achieve success."
+    }
+  },
+  "planningScheduling": {
+    "hero": {
+      "title": "Project Planning & Scheduling",
+      "subtitle": "Expert project planning and scheduling services to ensure your projects stay on track and within budget"
+    },
+    "overview": {
+      "title": "Comprehensive Project Planning Solutions",
+      "paragraphs": [
+        "At K2 Consulting's Critical Path Controls division, our Planning & Scheduling team specializes in developing baseline schedules, critical path analysis, and refining schedule logic to ensure accuracy and project alignment. We work closely with project teams to address scheduling challenges, correct issues, and optimize timelines, creating schedules that are not only realistic but also actionable and manageable.",
+        "Staffed by certified scheduling professionals with deep expertise, we use tools like Primavera P6 and Microsoft Project to deliver high-quality schedules that meet industry standards. Whether building an initial schedule, managing updates, or recovering a delayed timeline, our team ensures every step supports your project's success. With a focus on collaboration, precision, and clear communication, we provide solutions that keep projects on track and deliver results you can count on."
+      ],
+      "features": [
+        { "icon": "fas fa-layer-group", "title": "Baseline Development", "description": "Building robust baseline schedules that set clear and achievable project goals." },
+        { "icon": "fas fa-route", "title": "Critical Path Analysis", "description": "Identifying key tasks and dependencies to ensure timely project completion." },
+        { "icon": "fas fa-sliders-h", "title": "Timeline Management", "description": "Refining schedule logic and resolving conflicts for efficient project execution." },
+        { "icon": "fas fa-users", "title": "Team Coordination", "description": "Collaborating with project teams to align schedules with objectives and milestones." }
+      ]
+    },
+    "approach": {
+      "title": "Our Approach",
+      "cards": [
+        { "title": "Schedule Development", "description": "We create robust project schedules using industry-leading tools like Primavera P6 and Microsoft Project. Our schedules incorporate best practices and align with project objectives." },
+        { "title": "Resource Planning", "description": "Our team optimizes resource allocation across project activities, ensuring efficient utilization while maintaining realistic workload distributions and timeline feasibility." },
+        { "title": "Schedule Analysis", "description": "Using advanced tools like Deltek Acumen Fuse, we perform comprehensive schedule analysis to identify and resolve potential issues before they impact project delivery." },
+        { "title": "Progress Monitoring", "description": "We implement effective progress tracking systems with regular updates and performance metrics. Our approach ensures early identification of variances and corrective actions." },
+        { "title": "Schedule Recovery", "description": "When delays occur, we develop targeted recovery strategies to bring projects back on track. Our solutions optimize critical path activities while managing resource constraints." },
+        { "title": "Schedule Integration", "description": "We ensure seamless integration between scheduling and other project controls functions, including cost management, risk analysis, and earned value reporting." }
+      ]
+    },
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "questions": [
+        { "question": "What makes your scheduling services different from others?", "answer": "Our approach combines technical expertise, certified professionals, and a client-focused mindset. We integrate scheduling with cost and risk management, providing comprehensive solutions that drive efficiency and ensure project success." },
+        { "question": "Do you support both large and small projects?", "answer": "Absolutely. Our team is equipped to handle projects of all sizes, from small-scale initiatives to large, complex, multi-phase undertakings. We tailor our scheduling solutions to fit the unique scope and requirements of each project." },
+        { "question": "What tools do you use for scheduling?", "answer": "We primarily use industry-standard software such as Primavera P6 and Microsoft Project, ensuring precise and compliant schedules tailored to project needs." },
+        { "question": "What value does your scheduling team bring to a project?", "answer": "Our certified professionals deliver schedules that are accurate, actionable, and aligned with project goals. We offer expertise in critical path analysis, risk-adjusted planning, and schedule optimization, helping clients save time and reduce costs." },
+        { "question": "What industries do you support?", "answer": "Our planning and scheduling expertise spans diverse industries, including construction, transportation, government projects, and large-scale infrastructure." },
+        { "question": "Can you tailor your services to unique project needs?", "answer": "Certainly. We work closely with clients to understand their specific challenges and goals, offering customized scheduling solutions that address unique project complexities and objectives." }
+      ]
+    },
+    "cta": {
+      "title": "Need Expert Scheduling Support?",
+      "description": "Contact us to learn how our planning and scheduling services can ensure your project's success."
+    }
+  },
+  "claimsManagement": {
+    "hero": {
+      "title": "Claims Avoidance & Management",
+      "subtitle": "Proactive strategies and expert management to protect your project interests"
+    },
+    "overview": {
+      "title": "Comprehensive Claims Solutions",
+      "paragraphs": [
+        "At K2 Consulting, our Construction Claims Management team specializes in safeguarding your projects from costly disputes and delays. With expertise in claims prevention, management, and resolution, we provide proactive strategies that protect your interests throughout the project lifecycle. From meticulous contract reviews to robust documentation processes, we identify potential issues early and implement measures to minimize risks. Whether addressing changes in scope, unforeseen delays, or other disruptions, our team ensures your project stays on track with minimal impact on timelines and budgets.",
+        "When disputes arise, we offer comprehensive support, including schedule impact analysis, cost assessments, and expert testimony. Our professionals are highly skilled in navigating complex construction claims, leveraging industry best practices and advanced tools to provide clear, defensible insights. Through negotiation, mediation, or litigation, we strive to achieve favorable outcomes while preserving business relationships. With a focus on prevention, precision, and resolution, K2 Consulting is your trusted partner for managing the challenges of today's construction projects."
+      ],
+      "features": [
+        { "icon": "fas fa-shield-alt", "title": "Claims Prevention", "description": "Proactive strategies and best practices to minimize the risk of claims" },
+        { "icon": "fas fa-file-contract", "title": "Contract Review", "description": "Thorough analysis of contract documents to identify and mitigate potential issues" },
+        { "icon": "fas fa-balance-scale", "title": "Dispute Resolution", "description": "Expert support in resolving claims through negotiation, mediation, or litigation" },
+        { "icon": "fas fa-chart-line", "title": "Impact Analysis", "description": "Detailed assessment of schedule and cost impacts for effective claim support" }
+      ]
+    },
+    "approach": {
+      "title": "Our Approach",
+      "cards": [
+        { "title": "Risk Assessment", "description": "We conduct thorough project risk assessments to identify potential claim triggers early. Our proactive approach helps prevent issues before they escalate into claims." },
+        { "title": "Documentation Strategy", "description": "Our team implements robust documentation systems to maintain detailed records of project events, decisions, and communications that support claim prevention and resolution." },
+        { "title": "Contract Administration", "description": "We provide expert contract administration services to ensure compliance with terms and conditions, while maintaining proper documentation of changes and issues." },
+        { "title": "Claims Analysis", "description": "Our specialists perform comprehensive analysis of claims, including detailed schedule and cost impact assessments, supported by expert testimony when needed." },
+        { "title": "Negotiation Support", "description": "We provide strategic negotiation support to achieve optimal outcomes. Our approach focuses on maintaining business relationships while protecting client interests." },
+        { "title": "Expert Testimony", "description": "When needed, we provide expert testimony services, leveraging our extensive experience in construction claims and dispute resolution to support your position." }
+      ]
+    },
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "questions": [
+        { "question": "What is construction claims management, and why do I need it?", "answer": "Construction claims management involves identifying, preventing, and resolving disputes that arise during construction projects. It helps protect your interests, minimize delays, and avoid costly legal proceedings." },
+        { "question": "How can you help prevent claims before they happen?", "answer": "We use proactive strategies like contract reviews, risk assessments, and robust documentation processes to identify and address potential issues early, reducing the likelihood of disputes." },
+        { "question": "What types of claims do you handle?", "answer": "We manage a variety of claims, including scope changes, delays, disruptions, cost overruns, and contract disputes. Our team tailors its approach to the specifics of each situation." },
+        { "question": "Can you represent my interests in disputes?", "answer": "Yes, we provide expert support in negotiations, mediation, or litigation, helping you achieve favorable outcomes while preserving professional relationships." },
+        { "question": "What sets your team apart in claims resolution?", "answer": "Our expertise in both technical analysis and negotiation ensures we not only understand the complexities of construction claims but also achieve practical, cost-effective resolutions." },
+        { "question": "Do you provide expert testimony?", "answer": "Yes, our professionals have extensive experience providing expert testimony in arbitration and litigation, offering clear, reliable insights backed by detailed analysis and industry knowledge." }
+      ]
+    },
+    "cta": {
+      "title": "Need Claims Management Expertise?",
+      "description": "Contact us today for expert guidance on claims avoidance, management, and resolution."
+    }
+  },
+  "evms": {
+    "hero": {
+      "title": "Earned Value Management Systems",
+      "subtitle": "Comprehensive EVMS solutions for effective project performance measurement and control"
+    },
+    "overview": {
+      "title": "EVMS Excellence",
+      "paragraphs": [
+        "K2 Consulting's Earned Value Management Systems (EVMS) team is dedicated to helping organizations achieve effective project performance measurement and control. By integrating cost, schedule, and scope data, we provide clients with a clear and comprehensive view of their project's progress. Our certified EVMS professionals are well-versed in EIA-748 and DOE 413.3B guidelines, ensuring compliance with stringent federal and industry standards. We design, implement, and maintain EVMS solutions tailored to each client's unique needs, delivering actionable insights that keep projects on track.",
+        "Our approach goes beyond compliance, leveraging EVMS as a strategic tool to improve decision-making and resource management. By utilizing advanced tools and methodologies, we analyze performance trends, forecast outcomes, and identify risks before they impact project goals. Whether providing IP2M METRR-based training for your team or integrating EVMS into your existing project control systems, we equip organizations with the skills and tools to excel. With a focus on precision, transparency, and measurable outcomes, K2 Consulting ensures your projects are positioned for efficient execution and sustained success."
+      ],
+      "features": [
+        { "icon": "fas fa-check-circle", "title": "EVMS Compliance", "description": "Expert guidance to achieve and maintain compliance with EIA-748 and DOE 413.3B guidelines" },
+        { "icon": "fas fa-chart-bar", "title": "Performance Measurement", "description": "Robust systems for tracking and analyzing project performance metrics and cost data" },
+        { "icon": "fas fa-cogs", "title": "System Integration", "description": "Seamless integration of EVMS with existing project control systems" },
+        { "icon": "fas fa-graduation-cap", "title": "Training & Support", "description": "Comprehensive training and ongoing support for EVMS implementation" }
+      ]
+    },
+    "approach": {
+      "title": "Our Approach",
+      "cards": [
+        { "title": "System Design & Implementation", "description": "We design and implement EVMS solutions tailored to your organization's needs while ensuring compliance with EIA-748 guidelines. Our approach integrates best practices with practical considerations." },
+        { "title": "Compliance & Certification", "description": "Our team guides organizations through EVMS compliance requirements and certification processes. We provide expert support for system documentation and validation reviews." },
+        { "title": "Training & Mentoring", "description": "We deliver comprehensive training programs covering EVMS fundamentals, tools, and best practices. Our mentoring ensures your team develops the skills needed for success." },
+        { "title": "Performance Analysis", "description": "Our analytics capabilities transform EVMS data into actionable insights. We help organizations leverage performance metrics for improved decision-making." },
+        { "title": "System Integration", "description": "We ensure seamless integration between EVMS and existing project control systems. Our approach optimizes data flow and reporting capabilities across tools." },
+        { "title": "Continuous Improvement", "description": "We implement ongoing monitoring and optimization processes to maintain EVMS effectiveness. Our team provides regular assessments and recommendations." }
+      ]
+    },
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "questions": [
+        { "question": "What is Earned Value Management (EVM)?", "answer": "EVM is a project management methodology that integrates cost, schedule, and scope to measure project performance and progress. It provides a clear picture of whether a project is on track." },
+        { "question": "Why do I need an EVMS for my project?", "answer": "EVMS helps you monitor and control your project by identifying performance trends early, forecasting outcomes, and ensuring resources are used effectively to meet objectives." },
+        { "question": "How does EVMS improve decision-making?", "answer": "By integrating cost, schedule, and scope data, EVMS provides actionable insights into project performance, helping you address issues proactively and allocate resources more effectively." },
+        { "question": "Can EVMS integrate with our current project systems?", "answer": "Yes, we design EVMS solutions that seamlessly integrate with existing project management tools and enterprise systems, ensuring consistent workflows and data compatibility." },
+        { "question": "How do you ensure compliance with EIA-748 and DOE 413.3B?", "answer": "We use proven methodologies, detailed system reviews, and rigorous documentation processes to align with these standards while tailoring solutions to project-specific requirements." },
+        { "question": "What tools do you use for EVMS implementation?", "answer": "We leverage advanced software like Primavera P6, Deltek Cobra, and Power BI to ensure accurate performance tracking, forecasting, and reporting." }
+      ]
+    },
+    "cta": {
+      "title": "Ready to Enhance Your Project Performance?",
+      "description": "Contact us to learn how our EVMS expertise can help you achieve your project goals."
+    }
+  },
+  "riskManagement": {
+    "hero": {
+      "title": "Risk Management",
+      "subtitle": "Proactively identifying, assessing, and mitigating project risks to protect objectives."
+    },
+    "overview": {
+      "title": "Navigating Project Uncertainty",
+      "paragraphs": [
+        "All projects face uncertainty. Effective risk management is critical to navigating this uncertainty and increasing the likelihood of achieving project objectives. K2 Consulting provides comprehensive risk management services designed to proactively identify potential threats and opportunities, assess their potential impact, and develop appropriate response strategies. Our structured approach helps organizations minimize potential negative outcomes and capitalize on positive events.",
+        "We employ industry best practices and tools (including quantitative methods like Monte Carlo simulation when appropriate) throughout the risk management lifecycle: planning, identification, qualitative analysis, quantitative analysis, response planning, implementation, and monitoring. Our experts facilitate risk workshops, develop robust risk registers, and integrate risk management activities seamlessly into your overall project controls framework. By fostering a risk-aware culture, we help protect your project's scope, schedule, budget, and reputation."
+      ],
+      "features": [
+        { "icon": "fas fa-search", "title": "Risk Identification", "description": "Systematic processes and workshops to uncover potential project risks and opportunities." },
+        { "icon": "fas fa-calculator", "title": "Qualitative & Quantitative Analysis", "description": "Assessing the probability and impact of identified risks using structured techniques." },
+        { "icon": "fas fa-tasks", "title": "Response Planning & Mitigation", "description": "Developing actionable strategies to avoid, transfer, mitigate, or accept risks." },
+        { "icon": "fas fa-chart-area", "title": "Risk Monitoring & Control", "description": "Continuously tracking risks, implementing responses, and evaluating effectiveness." }
+      ]
+    },
+    "approach": {
+      "title": "Our Risk Management Approach",
+      "cards": [
+        { "title": "Risk Management Planning", "description": "Defining the approach, tools, and methodologies for managing risk on the project." },
+        { "title": "Stakeholder Engagement", "description": "Involving key stakeholders in risk identification, analysis, and response planning." },
+        { "title": "Risk Register Development", "description": "Creating and maintaining a comprehensive log of identified risks, analyses, and responses." },
+        { "title": "Schedule & Cost Risk Analysis", "description": "Utilizing techniques like Monte Carlo simulation to quantify the impact of risk on schedules and budgets." },
+        { "title": "Contingency Management", "description": "Developing and managing appropriate schedule and cost contingency based on risk exposure." },
+        { "title": "Reporting & Communication", "description": "Clearly communicating risk status, mitigation progress, and overall exposure to stakeholders." }
+      ]
+    },
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "questions": [
+        { "question": "Isn't risk management just creating a list of things that could go wrong?", "answer": "Effective risk management goes far beyond listing potential problems. It involves rigorous analysis, prioritization, proactive planning of responses, and continuous monitoring throughout the project." },
+        { "question": "What is the difference between a risk and an issue?", "answer": "A risk is a potential future event that *could* impact the project (positively or negatively). An issue is a risk that has occurred or a current problem that needs to be addressed." },
+        { "question": "What is Monte Carlo simulation in risk analysis?", "answer": "It's a quantitative technique that runs thousands of project simulations, incorporating uncertainty in task durations or costs, to produce a probabilistic forecast of potential completion dates or total costs." },
+        { "question": "How often should risks be reviewed?", "answer": "Risk management is an ongoing process. Risks should be reviewed regularly (e.g., weekly or bi-weekly) in project meetings, and the overall risk register updated periodically throughout the project lifecycle." }
+      ]
+    },
+    "cta": {
+      "title": "Proactively Manage Your Project Risks?",
+      "description": "Contact us to learn how our expert risk management services can protect your project objectives."
+    }
+  }
+} 

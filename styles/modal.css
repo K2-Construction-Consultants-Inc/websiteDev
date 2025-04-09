@@ -1,0 +1,203 @@
+/* Modal Styles */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 31, 77, 0.85);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  display: none;
+  z-index: 1999;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  cursor: pointer;
+}
+
+.modal-backdrop.show {
+  opacity: 1;
+  display: block;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  cursor: pointer;
+}
+
+.modal-overlay.show {
+  opacity: 1;
+  display: flex !important;
+  pointer-events: auto;
+}
+
+.modal-container {
+  position: relative;
+  background-color: var(--white);
+  padding: 30px;
+  border-radius: 12px;
+  max-width: 600px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  transform: translateY(-20px);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  cursor: default;
+  z-index: 2001;
+}
+
+.modal-overlay.show .modal-container {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stop event propagation for modal content */
+.modal-container,
+.modal-container *,
+.modal-container form,
+.modal-container input,
+.modal-container select,
+.modal-container textarea,
+.modal-container button {
+  pointer-events: auto;
+}
+
+/* Ensure modal container doesn't trigger overlay click */
+.modal-container {
+  pointer-events: auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* Prevent clicks on modal content from closing */
+.modal-container * {
+  pointer-events: auto;
+  position: relative;
+  z-index: 2;
+}
+
+/* Form Success Message */
+.form-success {
+  display: none;
+  text-align: center;
+  color: #28a745;
+  padding: 20px;
+  border-radius: 4px;
+  margin-top: 20px;
+  background-color: rgba(40, 167, 69, 0.1);
+}
+
+.form-success.show {
+  display: block;
+}
+
+/* Form Styles */
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--text-color);
+  font-weight: 500;
+}
+
+.form-group label.required::after {
+  content: "*";
+  color: #dc3545;
+  margin-left: 4px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+  background-color: var(--white);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+.form-group textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.form-actions button {
+  padding: 12px 30px;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color: var(--white);
+}
+
+.btn-primary:hover {
+  background-color: var(--accent-color);
+}
+
+.btn-secondary {
+  background-color: #e9ecef;
+  color: #495057;
+}
+
+.btn-secondary:hover {
+  background-color: #dee2e6;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .modal-container {
+    padding: 20px;
+    width: 95%;
+  }
+
+  .form-actions {
+    flex-direction: column-reverse;
+  }
+
+  .form-actions button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .modal-container {
+    padding: 15px;
+  }
+}

@@ -1,0 +1,85 @@
+{
+  "teamMembers": [
+    {
+      "name": "Michael Marcell",
+      "role": "President",
+      "image": "images/team-marcell-mike.jpg",
+      "email": "mmarcell@k2consulting.com",
+      "phone": "240.507.4755",
+      "details": [
+        "Mike Marcell is President of K2's Critical Path Controls and Government Operating Solutions divisions. He has 20 years of experience in project management and controls, program scheduling, risk management, and Building Information Modeling (BIM) solutions, and has led projects for a wide range of clients that include government agencies, Lockheed Martin, General Electric, General Dynamics, and Westinghouse.",
+        "Previously, Marcell was a Program Manager and Project Controls Manager with General Dynamics Robotic Systems, where he implemented the corporate earned value management system, developed operating procedures, and standardized critical path methodologies (CPM).",
+        "Before joining General Dynamics, Marcell was a Project Controls Manager at K2 and oversaw the scheduling and planning of a $2 billion Federal Aviation Administration (FAA) program.",
+        "Marcell is an expert in CPM scheduling, software integration, enterprise portfolio management, risk mitigation, Program Management Information Systems (PMIS), and Earned Value Management Systems (EVMS).",
+        "Marcell is a board member of the National Capital Chapter of the Association for the Advancement of Cost Engineering (AACEi), a certified Planning and Schedule Professional (PSP), and Earned Value Professional (EVP). He is also a board member and instructor at the College of Performance Management and a Scheduling Professional at the Program Management Institute.",
+        "He received a Bachelor of Science (BS) degree and Master of Business Administration (MBA) degree from the University of Maryland."
+      ]
+    },
+    {
+      "name": "Nishadi Perera",
+      "role": "Vice President",
+      "image": "images/team-perera-nishadi.png",
+      "email": "nperera@k2consulting.com",
+      "phone": "240.930.0312",
+      "details": [
+        "Nishadi Perera is Vice President of Consulting Services for K2 Critical Path Controls. A certified project management consultant with 16 years' experience, she is an expert in program planning and validation, process management, time management and scheduling, and risk analysis.",
+        "Before joining K2, Perera was a Senior Project Engineer with the Clark Construction Group, in charge of scheduling and resource allocation for projects in the Mid-Atlantic region.",
+        "Perera's K2 clients include the Washington Metropolitan Area Transit Authority, Ronald Reagan National Airport, Transportation Security Administration, developers, general contractors, and subcontractors. She supports major projects valued up to $15 billion.",
+        "Perera is a graduate of Catholic University, where she received a Bachelor of Arts degree in Civil Engineering and a Master of Science degree in Engineering Management. She is OSHA-certified and an accredited Planning and Scheduling Professional (PSP), Earned Value Professional (EVP), and LEED Accredited Professional in Building Design and Construction."
+      ]
+    },
+    {
+      "name": "Paul Krogh",
+      "role": "CEO, Subject Matter Expert",
+      "image": "images/team-krogh-paul.jpg",
+      "email": "pkrogh@k2consulting.com",
+      "details": [
+        "Paul Krogh is the founder and Chief Executive Officer of K2 Construction Consultants, Inc, and the subject matter expert of K2's Critical Path Controls division. For more than 35 years, Krogh has provided project consulting services on large capital programs in the United States and around the world. He is widely recognized for his expertise in planning, scheduling, cost and risk management, and claims avoidance and resolution.",
+        "At CEO, Krogh is responsible for the execution of long-range goals, strategic planning, and the creation and implementation of corporate policies. Under his leadership, the company has grown from two to sixty employees.",
+        "Krogh has played a prominent role on major airport, hotel, utility, industrial, and transportation infrastructure projects for commercial, government, and institutional clients. He regularly serves as an expert witness in court and he has been involved in the successful resolution of hundreds of claims disputes.",
+        "Krogh is a graduate of the University of North Carolina at Chapel Hill and earned a Master of Business Administration (MBA) degree from George Washington University. He is certified as a Project Management Professional (PMP) by the Project Management Institute (PMI) and as a Certified Forensic Claims Consultant (CFCC) and Certified Cost Professional (CCP) by the Association for the Advancement of Cost Engineering International (AACEi)."
+      ]
+    },
+    {
+      "name": "Nathan Hohenstreet",
+      "role": "Director of Scheduling",
+      "image": "images/team-hohenstreet-nathan.jpg",
+      "email": "nhohenstreet@k2consulting.com",
+      "phone": "240.904.0480",
+      "details": [
+        "Nathan Hohenstreet is the Director of Scheduling of K2 Critical Path Controls. He has more than 20 years' experience in Project Management, and is an expert in schedule and cost control, data analysis, process and Earned Value Management Systems (EVMS), Key Performance Indicator (KPI) reporting, software integration, impact analysis, and operational efficiency.",
+        "Previously, Hohenstreet was Project Controls Manager at Envirocon, where he created and implemented Standard Operating Procedures (SOP) for schedules, workflow monitoring, budget development, financial forecasting, and cash flow analysis.",
+        "Most recently, Hohenstreet was Senior Consultant on a project at the Y-12 National Security Complex, a Nuclear Security Administration facility in Tennessee, where he developed a program schedule and project controls that met strict system requirements.",
+        "He also has provided schedule analysis for the Department of Energy on its Waste Isolation Pilot Project and its Idaho National Laboratory program.",
+        "Hohenstreet received his Bachelor of Science degree from the University of Idaho, with a concentration in Production and Operations Management. He also has Engineering and Business degrees and is OSHA-certified."
+      ]
+    },
+    {
+      "name": "Michael Danish",
+      "role": "Director of Process, Analytics, & Technology",
+      "image": "images/team-danish-michael.jpg",
+      "email": "mdanish@k2consulting.com",
+      "phone": "305.699.9932",
+      "details": [
+        "Michael Danish is the Director of Process, Analytics & Technology, a business unit in our Critical Path Controls division. In his role, Michael is responsible for expanding our Virtual Design and Construction (VDC), schedule (4D) and cost integration (5D) services, developing advanced analytical tools for performance management and analysis, and supporting clients with the development and improvement of project management and project controls processes and procedures.",
+        "During his career, Michael has distinguished himself as a highly motivated leader in project management and project controls with a track record of successful business development and project controls system implementations, improving and standardizing processes, and exceeding client expectations. His wide-ranging professional expertise has enabled him to oversee all aspects of projects from inception to completion in a variety of industries including defense, oil and gas, nuclear, renewables, building construction, and transportation.",
+        "Before joining K2, he was a Senior Project Controls Manager at EnergySolutions where he was responsible for providing project controls and strategic planning services for nuclear decommissioning projects across Japan and Taiwan, including for the Fukushima Daiichi project. He has worked in Afghanistan, Iraq, Guam, Japan, Taiwan, and the United Arab Emirates.",
+        "Danish, who is a Certified Cost Professional (CCP), Planning and Scheduling Professional (PSP), Earned Value Professional (EVP), Project Management Professional (PMP), and Certified Scrum Master (CSM) earned a Bachelor of Science degree in Finance and a Bachelor of Science degree in Economics from West Virginia University and an Executive Master of Business Administration from Columbia University."
+      ]
+    },
+    {
+      "name": "Tim Boatwright",
+      "role": "Director of Earned Value Management Systems",
+      "image": "images/team-boatwright-tim.jpg",
+      "email": "tboatwright@k2consulting.com",
+      "phone": "240.517.0416",
+      "details": [
+        "Tim Boatwright is the Director of Earned Value Management Systems, a focus area in our Critical Path Controls division.",
+        "Tim is responsible for K2's EVMS services which help clients meet contractual compliance obligations, elevate project performance, and conduct sophisticated organizational analysis. His team focuses on EVMS policy and procedure development, cost and schedule integration, sustainment, and training.",
+        "Tim has over thirty years of program and project management experience, focusing on delivering results for large capital acquisition projects. He has designed, implemented, and audited EVM Systems in various industries and led teams applying those skills.",
+        "At K2, Tim oversees a group of highly trained consultants responsible for the prevention, management, analysis, and resolution of time and cost claims.",
+        "Tim has provided strategic consulting, training, and program assessment services for clients where he has facilitated over 30 Integrated Baseline Reviews (IBR), served as a Subject Matter Expert for the General Accountability Office (GAO), and developed policy documents for the Federal Aviation Agency (FAA). He was the lead EVM SME for the DHS market for Booz Allen, where he managed a scheduling and EVM SMEs team."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,588 @@
+/* Service Page Styles */
+main {
+  min-height: 100vh;
+  background-color: var(--white);
+  position: relative;
+}
+
+/* Service Hero Section */
+.service-hero {
+  position: relative;
+  height: 400px;
+  overflow: hidden;
+  background-color: var(--primary-color);
+  margin-top: 0;
+}
+
+.service-hero video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-content {
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: var(--white);
+  padding: 20px;
+  background: rgba(0, 31, 77, 0.6);
+}
+
+.hero-content h1 {
+  font-size: 3.5rem;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.hero-content p {
+  font-size: 1.4rem;
+  max-width: 800px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Service Section */
+.service-section {
+  padding: 60px 0;
+  position: relative;
+  background-color: var(--white);
+}
+
+.service-section.with-video {
+  color: var(--white);
+  background: var(--primary-color);
+}
+
+.service-section.with-video .background-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.2;
+}
+
+.service-banner {
+  margin-bottom: 30px;
+}
+
+.service-banner img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 8px;
+  display: block;
+}
+
+.service-content {
+  position: relative;
+}
+
+.service-content h2 {
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.service-content p {
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+  line-height: 1.6;
+  text-align: center;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Feature Grid */
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.feature {
+  text-align: center;
+  padding: 30px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.feature:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.feature i {
+  font-size: 2.5rem;
+  color: var(--accent-color);
+  margin-bottom: 20px;
+  transition: transform 0.3s ease;
+}
+
+.feature:hover i {
+  transform: scale(1.1);
+}
+
+.feature h3 {
+  font-size: 1.3rem;
+  margin-bottom: 15px;
+  color: inherit;
+}
+
+.feature p {
+  font-size: 1rem;
+  color: var(--light-text);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Details Grid (Used for Approach Section - now 9 cards, 3x3 layout) */
+.details-grid {
+  display: grid;
+  /* Default to 1 column for mobile */
+  grid-template-columns: 1fr;
+  gap: 30px;
+  margin-top: 40px;
+}
+
+/* Service Offering Grid (Used for the 4 service links, 2x2 layout) */
+.service-offering-grid {
+    display: grid;
+    /* Default to 1 column for mobile */
+    grid-template-columns: 1fr;
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.service-offering-grid .detail-card {
+    /* Override default detail-card background for this specific grid */
+    background-color: var(--light-bg); 
+    /* Ensure text colors are appropriate for the light-bg */
+    h3 {
+        color: var(--primary-color);
+    }
+    p {
+         color: var(--text-color);
+    }
+    i { /* Make icon stand out */
+        color: var(--primary-color);
+    }
+}
+
+/* Detail Card (General Styles) */
+.detail-card {
+  /* REMOVED conditional background based on section */
+  /* background: rgba(255, 255, 255, 0.1); */
+  /* .service-section:not(.with-video) & { background: var(--white); } */ 
+  background: var(--white); /* Default to white, override above for service-offering-grid */
+  padding: 30px;
+  border-radius: 8px;
+  /* backdrop-filter: blur(5px); REMOVED as background is now solid */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid var(--light-border-color, rgba(0, 0, 0, 0.15));
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.detail-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Enhance shadow on hover */
+}
+
+.detail-card i { 
+    font-size: 2rem;
+    color: var(--accent-color); /* Keep accent for icons on white bg */
+    margin-bottom: 15px;
+    width: fit-content;
+}
+
+.detail-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 15px;
+  color: var(--primary-color);
+}
+
+.detail-card p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0;
+  color: var(--text-color);
+  flex-grow: 1;
+}
+
+.detail-card .btn { /* Style button if present (service offering cards) */
+    margin-top: 20px; /* Space above button */
+    align-self: flex-start; /* Align button to the left */
+    padding: 10px 20px;
+    font-size: 0.9rem;
+}
+
+/* Analytics Dashboard */
+.analytics-dashboard {
+  margin: 40px 0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.analytics-dashboard iframe {
+  display: block;
+  width: 100%;
+  border: none;
+}
+
+/* Video Container */
+.video-container {
+  margin: 40px 0;
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  height: 0;
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* EVMS Blog Section */
+.evms-blog-section {
+  padding: 60px 0;
+  position: relative;
+  background-color: var(--white);
+}
+
+.evms-blog-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.evms-blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.evms-blog-card {
+  background: var(--white);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.evms-blog-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.evms-blog-image {
+  height: 200px;
+  overflow: hidden;
+}
+
+.evms-blog-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.evms-blog-content {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.evms-blog-content h3 {
+  font-size: 1.3rem;
+  color: var(--primary-color);
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+.evms-blog-meta {
+  color: var(--light-text);
+  font-size: 0.9rem;
+  margin-bottom: 15px;
+}
+
+.evms-blog-content p {
+  font-size: 1rem;
+  color: var(--text-color);
+  margin-bottom: 20px;
+  line-height: 1.6;
+  text-align: left;
+  flex-grow: 1;
+}
+
+.evms-blog-content .btn {
+  align-self: flex-start;
+  margin-top: auto;
+}
+
+.evms-blog-section .text-center {
+  text-align: center;
+  margin-top: 40px;
+  width: 100%;
+}
+
+.evms-blog-section .text-center .btn {
+  display: inline-block;
+}
+
+/* FAQ Section */
+.faq-section {
+  padding: 60px 0; /* Add padding like other sections */
+  background-color: var(--white); /* Ensure background */
+}
+
+.faq-section h2 {
+  text-align: center;
+  margin-bottom: 40px;
+  color: var(--primary-color);
+  font-size: 2.5rem;
+}
+
+.carousel {
+  position: relative;
+  max-width: 800px; /* Limit width */
+  margin: 0 auto; /* Center */
+  overflow: hidden; /* <<< CRITICAL: Hide slides that are off-screen */
+  border-radius: 8px;
+  background-color: var(--light-bg); /* Optional: Light bg for contrast */
+  padding: 40px 30px; /* Increased vertical padding */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  width: 100%; /* Ensure carousel takes full width up to max-width */
+}
+
+.carousel-items {
+  display: flex;
+  transition: transform 0.5s ease-in-out; /* Smooth transition for sliding */
+  width: 100%; /* Ensure container is proper width */
+  /* Added margin for extra spacing to hide adjacent slides better */
+  margin: 0 auto;
+  position: relative; /* Added for positioning context */
+}
+
+.carousel-item {
+  min-width: 100%; 
+  width: 100%; /* Set explicit width */
+  flex: 0 0 100%; /* Don't grow, don't shrink, stay at 100% width */
+  flex-shrink: 0; 
+  padding: 15px 20px; /* Adjust padding */
+  box-sizing: border-box; 
+  height: auto; /* Ensure height is not fixed */
+  overflow: hidden; /* Prevent content from overflowing */
+  /* Add clip path to hide edges of adjacent slides */
+  clip-path: inset(0 0 0 0);
+  opacity: 0.15; /* Even lower opacity for non-active slides */
+  transition: opacity 0.6s ease-in-out, transform 0.4s ease-in-out; /* Smoother transitions */
+  transform: scale(0.92); /* Slightly smaller non-active slides */
+  position: relative; /* For z-index */
+  z-index: 1; /* Default z-index */
+}
+
+.carousel-item.active {
+  opacity: 1; /* Full opacity for active slide */
+  transform: scale(1); /* Full size for active slide */
+  z-index: 2; /* Higher z-index for active slide to appear above others */
+}
+
+.faq-section .carousel .carousel-item h3 { /* Increased Specificity */
+  margin-top: 0;
+  margin-bottom: 15px;
+  color: var(--primary-color);
+  font-size: 1.3rem;
+  white-space: normal; /* Allow wrapping */
+  word-break: break-word; /* Force breaks if needed */
+  max-width: 100%; /* Prevent exceeding container */
+  line-height: 1.3; /* Adjust heading line height */
+}
+
+.faq-section .carousel .carousel-item p { /* Increased Specificity */
+  margin: 0;
+  line-height: 1.6;
+  font-size: 1rem;
+  color: var(--text-color);
+  white-space: normal; /* Allow wrapping - removed !important for now */
+  word-break: break-word; /* Allow breaks - removed !important for now */
+  max-width: 100%; 
+  overflow-wrap: break-word; 
+  height: auto; /* Ensure height auto */
+}
+
+.carousel-dots {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.carousel-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background-color: #ccc;
+  border-radius: 50%;
+  margin: 0 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.carousel-dot.active {
+  background-color: var(--accent-color);
+}
+
+/* Optional: Prev/Next Buttons (if added later) */
+.carousel-prev,
+.carousel-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.3);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.carousel-prev {
+  left: 15px;
+}
+
+.carousel-next {
+  right: 15px;
+}
+
+.carousel-prev:hover,
+.carousel-next:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* CTA Section */
+.cta-section {
+  background: var(--cta-bg-color);
+  color: var(--white);
+  padding: 80px 0;
+  text-align: center;
+}
+
+.cta-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.cta-section p {
+  font-size: 1.2rem;
+  margin-bottom: 40px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Responsive adjustments for grids */
+@media (min-width: 768px) {
+    /* Approach grid becomes 3 columns */
+    .details-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    /* Service Offering grid becomes 2 columns */
+    .service-offering-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .service-hero {
+    height: 300px;
+  }
+
+  .hero-content h1 {
+    font-size: 2.8rem;
+  }
+
+  .hero-content p {
+    font-size: 1.2rem;
+  }
+
+  .service-section {
+    padding: 40px 0;
+  }
+
+  .service-banner img {
+    height: 200px;
+  }
+
+  .service-content h2 {
+    font-size: 2rem;
+  }
+
+  .service-content p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .service-hero {
+    height: 250px;
+  }
+
+  .hero-content h1 {
+    font-size: 2.2rem;
+  }
+
+  .hero-content p {
+    font-size: 1rem;
+  }
+
+  .service-section {
+    padding: 30px 0;
+  }
+
+  .service-banner img {
+    height: 150px;
+  }
+
+  .service-content h2 {
+    font-size: 1.8rem;
+  }
+}
+
+/* NEW: Section Separator Styles */
+.section-separator {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0));
+    /* Reduced margin */
+    margin: 30px auto; 
+    width: 80%;
+    max-width: 600px;
+}

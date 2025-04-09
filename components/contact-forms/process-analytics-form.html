@@ -1,0 +1,64 @@
+<div class="modal-overlay" id="processAnalyticsContactForm">
+  <div class="modal-container">
+    <form
+      id="processAnalyticsForm"
+      onsubmit="return window.handleProcessAnalyticsFormSubmit(event)"
+    >
+      <h2>Get Started with Process Analytics & Technology</h2>
+      <div class="form-group">
+        <label for="processAnalyticsName" class="required">Name</label>
+        <input type="text" id="processAnalyticsName" name="name" required />
+      </div>
+
+      <div class="form-group">
+        <label for="processAnalyticsEmail" class="required">Email</label>
+        <input type="email" id="processAnalyticsEmail" name="email" required />
+      </div>
+
+      <div class="form-group">
+        <label for="processAnalyticsCompany">Company</label>
+        <input type="text" id="processAnalyticsCompany" name="company" />
+      </div>
+
+      <div class="form-group">
+        <label for="processAnalyticsService" class="required"
+          >Service Needed</label
+        >
+        <select id="processAnalyticsService" name="service" required>
+          <option value="">Select a service</option>
+          <option value="process-optimization">Process Optimization</option>
+          <option value="data-integration">Data Integration</option>
+          <option value="advanced-analytics">Advanced Analytics</option>
+          <option value="4d-5d-modeling">4D/5D Modeling</option>
+          <option value="ai-ml">AI & Machine Learning</option>
+          <option value="lidar">LiDAR Technology</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="processAnalyticsMessage" class="required">Message</label>
+        <textarea
+          id="processAnalyticsMessage"
+          name="message"
+          placeholder="Tell us about your process analytics needs..."
+          required
+        ></textarea>
+      </div>
+
+      <div class="form-actions">
+        <button
+          type="button"
+          class="btn-secondary"
+          onclick="ModalSystem.hideModal(this.closest('.modal-overlay'))"
+        >
+          Cancel
+        </button>
+        <button type="submit" class="btn-primary">Submit Request</button>
+      </div>
+
+      <div id="processAnalyticsFormSuccess" class="form-success">
+        Thank you for your interest! We'll be in touch shortly.
+      </div>
+    </form>
+  </div>
+</div>

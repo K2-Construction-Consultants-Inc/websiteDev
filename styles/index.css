@@ -1,0 +1,326 @@
+/* Index Page Specific Styles */
+
+/* Hero Section */
+.service-hero {
+  height: 400px;
+  background-image: url("../images/banner-home.jpg");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--white);
+  margin-bottom: 50px;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  width: 100vw;
+}
+
+.service-hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 31, 77, 0.85);
+}
+
+/* Override services.css hero-content styles */
+.service-hero .hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  padding: 0;
+  background: none;
+  height: auto;
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.hero-content p {
+  font-size: 1.25rem;
+  margin: 0;
+}
+
+/* Metrics Section */
+.metrics-section {
+  padding: 50px 0;
+  background-color: var(--white);
+  margin-bottom: 50px;
+}
+
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 0px;
+}
+
+.metric-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: var(--white);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.metric-card:hover {
+  transform: translateY(-5px);
+}
+
+.metric-image {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.metric-image img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.metric-number {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: var(--primary-color);
+  margin-bottom: 2px;
+  line-height: 1;
+}
+
+.metric-label {
+  font-size: 1.1rem;
+  color: var(--text-color);
+  line-height: 1.3;
+}
+
+/* Services Section */
+.services-overview {
+  padding: 50px 0;
+  background-color: var(--light-bg);
+  margin-bottom: 50px;
+}
+
+.services-overview h2 {
+  text-align: center;
+  margin-bottom: 40px;
+  color: var(--primary-color);
+  font-size: 2.5rem;
+}
+
+.services-grid {
+  display: grid;
+  /* Default: 1 column (mobile first) */
+  grid-template-columns: 1fr;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.service-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--white);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  min-height: 100%; /* Ensure cards in a row have same height */
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+}
+
+.service-card img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+
+.service-card h3 {
+  padding: 25px 25px 15px;
+  color: var(--primary-color);
+  font-size: 1.75rem;
+}
+
+/* Adjusted paragraph styling to not grow if list exists */
+.service-card p {
+  padding: 0 25px;
+  color: var(--text-color);
+  line-height: 1.6;
+  font-size: 1.1rem;
+  flex-grow: 0; /* Don't grow if other content follows */
+  margin-bottom: 15px; /* Add margin below paragraph */
+}
+
+/* NEW: Service Card List Styling */
+.service-card ul {
+  list-style: none; /* Remove default bullets */
+  padding: 0 25px 15px; /* Match paragraph padding, add bottom padding */
+  margin: 0 0 0 0; /* Remove default margins, control spacing below */
+  font-size: 1rem; /* Slightly smaller */
+  color: var(--text-color);
+  flex-grow: 1; /* Allow list to take up remaining space */
+  line-height: 1.5; /* Adjust line height for list items */
+}
+
+.service-card li {
+  margin-bottom: 8px; /* Space between items */
+  padding-left: 1.3em; /* Indent text to make room for pseudo-element */
+  position: relative;
+}
+
+.service-card li::before {
+  content: '\2023'; /* Triangular bullet */
+  color: var(--accent-color); /* Use accent color */
+  position: absolute;
+  left: 0;
+  top: 0.05em; /* Fine-tune vertical alignment */
+  font-size: 1.1em; /* Adjust size */
+  line-height: inherit;
+}
+/* END NEW List Styling */
+
+.service-card .btn {
+  display: inline-block;
+  margin: 25px;
+  margin-top: auto; /* Push button to bottom if card heights vary */
+  padding: 12px 30px;
+  background-color: var(--primary-color);
+  color: var(--white);
+  text-decoration: none;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+  text-align: center;
+  font-size: 1.1rem;
+}
+
+.service-card .btn:hover {
+  background-color: var(--accent-color);
+}
+
+/* --- Responsive Grid Layout --- */
+
+/* Medium screens (e.g., tablets) */
+@media (min-width: 768px) {
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns */
+    gap: 40px;
+  }
+  .service-card img {
+    height: 250px;
+  }
+}
+
+/* Large screens (desktops) */
+@media (min-width: 1024px) {
+  .services-grid {
+    grid-template-columns: repeat(3, 1fr); /* 3 columns */
+    gap: 40px;
+  }
+   .service-card img {
+    height: 220px; /* Slightly smaller image for 3 columns */
+  }
+}
+
+/* --- Other existing responsive styles --- */
+/* Styles for smaller screens within existing max-width queries */
+/* Ensure these don't conflict with the min-width grid settings above */
+
+@media (max-width: 1024px) {
+  /* Only non-grid styles here if needed */
+  .metrics-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+  .metric-image img {
+    height: 160px;
+  }
+}
+
+@media (max-width: 767px) { /* Adjusted from 768 to avoid conflict */
+  /* Service grid is already 1 column by default */
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+  .hero-content p {
+    font-size: 1.1rem;
+  }
+  .metrics-section,
+  .services-overview {
+    padding: 30px 0;
+    margin-bottom: 30px;
+  }
+  .service-hero {
+    margin-bottom: 30px;
+  }
+  .metric-image img {
+    height: 140px;
+  }
+}
+
+@media (max-width: 480px) {
+  .metrics-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .service-card img {
+    height: 200px;
+  }
+  .service-card h3 {
+    font-size: 1.5rem;
+    padding: 20px 20px 10px;
+  }
+  /* Adjusted paragraph and list styling for smaller screens */
+  .service-card p,
+  .service-card ul {
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 1rem;
+  }
+   .service-card ul {
+       padding-bottom: 10px;
+   }
+   .service-card li {
+        margin-bottom: 6px;
+   }
+  .service-card .btn {
+    margin: 20px;
+    font-size: 1rem;
+  }
+  .hero-content h1 {
+    font-size: 1.8rem;
+  }
+  .hero-content p {
+    font-size: 1rem;
+  }
+  .metrics-section,
+  .services-overview {
+    padding: 20px 0;
+    margin-bottom: 20px;
+  }
+  .service-hero {
+    margin-bottom: 20px;
+  }
+  .metric-image img {
+    height: 120px;
+  }
+}

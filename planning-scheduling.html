@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Project Planning & Scheduling | Critical Path Controls</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles/main.css" />
+    <link rel="stylesheet" href="styles/navigation.css" />
+    <link rel="stylesheet" href="styles/breadcrumb.css" />
+    <link rel="stylesheet" href="styles/services.css" />
+    <link rel="stylesheet" href="styles/modal.css" />
+    <link rel="stylesheet" href="styles/forms.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="images/site-icons/32_32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="images/site-icons/192_192.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="images/site-icons/180_180.png"
+    />
+  </head>
+  <body data-page="planningScheduling">
+    <!-- Include centralized navigation -->
+    <div id="navigation"></div>
+
+    <!-- Include breadcrumb -->
+    <div id="breadcrumb"></div>
+
+    <main>
+      <section class="service-hero">
+        <video autoplay loop muted playsinline>
+          <source src="images/video-scheduling.webm" type="video/webm" />
+        </video>
+        <div class="hero-content">
+          <h1 id="heroTitle"></h1>
+          <p id="heroSubtitle"></p>
+        </div>
+      </section>
+
+      <section class="service-section animate-on-scroll">
+        <div class="container">
+          <div class="service-banner">
+            <img
+              id="overviewBanner"
+              src="images/service-planning-scheduling.jpg"
+              alt="Project Planning & Scheduling"
+            />
+          </div>
+          <div class="service-content">
+            <h2 id="overviewTitle"></h2>
+            <div id="overviewParagraphs"></div>
+            <div class="feature-grid" id="overviewFeatures"></div>
+          </div>
+        </div>
+      </section>
+
+      <hr class="section-separator">
+
+      <section class="service-section with-video animate-on-scroll">
+        <video class="background-video" autoplay loop muted playsinline>
+          <source src="images/video-scheduling.webm" type="video/webm" />
+        </video>
+        <div class="container">
+          <h2 id="approachTitle"></h2>
+          <div class="details-grid" id="approachCards"></div>
+        </div>
+      </section>
+
+      <section class="faq-section animate-on-scroll">
+        <div class="container">
+          <h2 id="faqTitle"></h2>
+          <div class="carousel">
+            <div class="carousel-items" id="faqItems"></div>
+            <div class="carousel-dots"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="cta-section">
+        <div class="container">
+          <h2 id="ctaTitle"></h2>
+          <p id="ctaDescription"></p>
+          <a
+            href="#"
+            class="btn btn-large"
+            onclick="showGeneralContactModal()"
+            >Contact Us</a
+          >
+        </div>
+      </section>
+    </main>
+
+    <!-- Include footer -->
+    <div id="footer"></div>
+
+    <!-- Include floating contact button -->
+    <div id="floatingContact"></div>
+
+    <!-- Contact Form Modals -->
+    <div id="generalContactModal"></div>
+
+    <!-- Load scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/loader.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const pageKey = document.body.getAttribute('data-page');
+            if (!pageKey) { /* ... error handling ... */ return; }
+
+            fetch('content/project-performance.json') // Fetch the group JSON
+                .then(response => { /* ... error handling ... */ return response.json(); })
+                .then(data => {
+                    const pageData = data[pageKey];
+                    if (!pageData) { /* ... error handling ... */ return; }
+
+                    // --- Populate Content --- 
+                    setText('#heroTitle', pageData.hero?.title);
+                    setText('#heroSubtitle', pageData.hero?.subtitle);
+                    
+                    // Overview section might have paragraphs OR features, or both
+                    setImageSource('#overviewBanner', pageData.overview?.banner, pageData.hero?.title || 'Overview');
+                    setText('#overviewTitle', pageData.overview?.title);
+                    setParagraphs('#overviewParagraphs', pageData.overview?.paragraphs);
+                    populateFeatureCards('#overviewFeatures', pageData.overview?.features);
+                    
+                    // Approach section uses detail cards
+                    setText('#approachTitle', pageData.approach?.title);
+                    populateDetailCards('#approachCards', pageData.approach?.cards);
+
+                    setText('#faqTitle', pageData.faq?.title);
+                    populateFaqItems('#faqItems', pageData.faq?.questions);
+
+                    setText('#ctaTitle', pageData.cta?.title);
+                    setText('#ctaDescription', pageData.cta?.description);
+
+                    if (window.initializeCarousel) { window.initializeCarousel(); }
+                     else { console.warn('initializeCarousel function not found.'); }
+                })
+                .catch(error => { console.error('Error loading content:', error); });
+
+            // --- Helper Functions (Include all helpers: setText, setImageSource, setParagraphs, populateDetailCards, populateFaqItems) --- 
+             function setText(selector, text) { const el = document.querySelector(selector); if(el && text) el.textContent = text; }
+             function setImageSource(selector, src, alt) { const el = document.querySelector(selector); if(el && src) { el.src = src; el.alt = alt || 'Service Image'; } }
+             function setParagraphs(containerSelector, paragraphs) { const container = document.querySelector(containerSelector); if (container && Array.isArray(paragraphs)) { container.innerHTML = ''; paragraphs.forEach(pText => { const p = document.createElement('p'); p.textContent = pText; container.appendChild(p); }); } }
+             function populateDetailCards(containerSelector, cards) { const container = document.querySelector(containerSelector); if (container && Array.isArray(cards)) { container.innerHTML = ''; cards.forEach(cardData => { const card = document.createElement('div'); card.className = 'detail-card'; let innerHTML = ''; if (cardData.icon) innerHTML += `<i class="${cardData.icon}"></i>`; if (cardData.title) innerHTML += `<h3>${cardData.title}</h3>`; if (cardData.description) innerHTML += `<p>${cardData.description}</p>`; if (cardData.link) innerHTML += `<a href="${cardData.link}" class="btn">Learn More</a>`; card.innerHTML = innerHTML; container.appendChild(card); }); } }
+             function populateFeatureCards(containerSelector, cards) { const container = document.querySelector(containerSelector); if (container && Array.isArray(cards)) { container.innerHTML = ''; cards.forEach(cardData => { const card = document.createElement('div'); card.className = 'feature'; let innerHTML = ''; if (cardData.icon) innerHTML += `<i class="fas ${cardData.icon}"></i>`; if (cardData.title) innerHTML += `<h3>${cardData.title}</h3>`; if (cardData.description) innerHTML += `<p>${cardData.description}</p>`; card.innerHTML = innerHTML; container.appendChild(card); }); } }
+             function populateFaqItems(containerSelector, questions) { const container = document.querySelector(containerSelector); if (container && Array.isArray(questions)) { container.innerHTML = ''; questions.forEach(qData => { const item = document.createElement('div'); item.className = 'carousel-item'; item.innerHTML = `<h3>${qData.question}</h3><p>${qData.answer}</p>`; container.appendChild(item); }); } }
+        });
+    </script>
+  </body>
+</html>

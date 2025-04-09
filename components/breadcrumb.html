@@ -1,0 +1,213 @@
+<div class="breadcrumb">
+  <div class="breadcrumb-container">
+    <ul class="breadcrumb-list" id="breadcrumbList">
+      <li class="breadcrumb-item">
+        <a href="https://www.k2consulting.com">Home</a>
+        <span class="breadcrumb-separator">/</span>
+      </li>
+      <li class="breadcrumb-item" id="cpcLink">
+        <a href="index.html">Critical Path Controls</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<script>
+  // Create a custom event that will trigger once the page is fully loaded
+  document.addEventListener('BreadcrumbReady', function(e) {
+    console.log("Breadcrumb Event Triggered with data:", e.detail);
+    updateBreadcrumb(e.detail.page, e.detail.rootPath);
+  });
+
+  // This function will update the breadcrumb with the proper hierarchy
+  function updateBreadcrumb(dataPage, rootPath) {
+    console.log("updateBreadcrumb called with:", dataPage, rootPath);
+    
+    const breadcrumbList = document.getElementById("breadcrumbList");
+    const cpcLinkItem = document.getElementById("cpcLink");
+
+    if (!breadcrumbList || !cpcLinkItem) {
+      console.error("Breadcrumb critical HTML elements (#breadcrumbList or #cpcLink) missing!");
+      return;
+    }
+
+    // Clear any previously added dynamic items (beyond Home and CPC)
+    while (breadcrumbList.children.length > 2) {
+        breadcrumbList.removeChild(breadcrumbList.lastChild);
+    }
+    
+    // Clear separator from CPC link if it exists from previous runs
+    const oldSep = cpcLinkItem.querySelector('.breadcrumb-separator');
+    if (oldSep) oldSep.remove();
+
+    if (!dataPage || dataPage === "home") {
+        console.log("Breadcrumb: On Home page or data-page missing, showing default.");
+        return; // Only show Home / Critical Path Controls
+    }
+
+    // --- Hierarchy Map --- 
+    const pageHierarchy = {
+        "blog": [{ text: "Blog", url: "blog.html" }],
+        "leadership": [{ text: "About Us", url: "leadership.html" }],
+        "careers": [{ text: "Careers", url: "careers.html" }],
+        "projectPerformance": [{ text: "Project Performance", url: "project-performance.html" }],
+        "planningScheduling": [{ text: "Project Performance", url: "project-performance.html" }, { text: "Project Planning & Scheduling", url: "planning-scheduling.html" }],
+        "claimsManagement": [{ text: "Project Performance", url: "project-performance.html" }, { text: "Claims Avoidance & Management", url: "claims-management.html" }],
+        "evms": [{ text: "Project Performance", url: "project-performance.html" }, { text: "Earned Value Management Systems", url: "evms.html" }],
+        "riskManagement": [{ text: "Project Performance", url: "project-performance.html" }, { text: "Risk Management", url: "risk-management.html" }],
+        "dataTransformation": [{ text: "Data Transformation", url: "data-transformation.html" }],
+        "pmis": [{ text: "Data Transformation", url: "data-transformation.html" }, { text: "PMIS", url: "pmis.html" }],
+        "dataAnalytics": [{ text: "Data Transformation", url: "data-transformation.html" }, { text: "Data Analytics & Visualization", url: "data-analytics.html" }],
+        "aiMl": [{ text: "Data Transformation", url: "data-transformation.html" }, { text: "Artificial Intelligence & Machine Learning", url: "ai-ml.html" }],
+        "vdc": [{ text: "Data Transformation", url: "data-transformation.html" }, { text: "Virtual Design & Construction (VDC)", url: "vdc.html" }],
+        "cyberSecurity": [{ text: "Cyber Security", url: "cyber-security.html" }],
+        "assessmentsReviews": [{ text: "Cyber Security", url: "cyber-security.html" }, { text: "Security Assessments & Code Reviews", url: "assessments-reviews.html" }],
+        "monitoringVulnerability": [{ text: "Cyber Security", url: "cyber-security.html" }, { text: "Continuous Monitoring & Vulnerability Management", url: "monitoring-vulnerability.html" }],
+        "auditReporting": [{ text: "Cyber Security", url: "cyber-security.html" }, { text: "Audit Support & Compliance Reporting", url: "audit-reporting.html" }],
+        "documentationSupport": [{ text: "Cyber Security", url: "cyber-security.html" }, { text: "Security Documentation & Support", url: "documentation-support.html" }],
+        "blogPostFuse": [{ text: "Blog", url: "blog.html" }, { text: "How to Analyze a Project Schedule Using Deltek Acumen Fuse", url: "blog/analyze-project-schedule-using-deltek-acumen-fuse.html"}],
+        "blogPostEvms": [{ text: "Blog", url: "blog.html" }, { text: "Best Practices for EVMS Implementation", url: "blog/evms-implementation-best-practices.html"}]
+    };
+    // --- End Map ---
+
+    const currentHierarchy = pageHierarchy[dataPage];
+
+    if (!currentHierarchy) {
+        console.warn(`Breadcrumb: No hierarchy defined for data-page="${dataPage}"`);
+        return; // Don't add anything further if page isn't in the map
+    }
+
+    console.log("Breadcrumb: Found hierarchy:", currentHierarchy);
+
+    // Add separator after CPC link since we have more items
+    const cpcSeparator = document.createElement("span");
+    cpcSeparator.classList.add("breadcrumb-separator");
+    cpcSeparator.textContent = "/";
+    cpcLinkItem.appendChild(cpcSeparator);
+
+    // Build the breadcrumb items
+    currentHierarchy.forEach((pageInfo, index) => {
+        const isLastItem = index === currentHierarchy.length - 1;
+        const li = document.createElement("li");
+        li.classList.add("breadcrumb-item");
+
+        if (isLastItem) {
+            li.textContent = pageInfo.text;
+            console.log(`Breadcrumb: Adding text item "${pageInfo.text}"`);
+        } else {
+            const link = document.createElement("a");
+            let finalHref = pageInfo.url;
+            if (!finalHref.startsWith("http") && !finalHref.startsWith("/") && rootPath !== ".") {
+                finalHref = `${rootPath}/${finalHref}`;
+            } else if (rootPath === "." && finalHref.startsWith("/")) {
+                finalHref = finalHref.substring(1);
+            }
+            link.href = finalHref;
+            link.textContent = pageInfo.text;
+            li.appendChild(link);
+            console.log(`Breadcrumb: Adding link item "${pageInfo.text}" -> ${finalHref}`);
+
+            const separator = document.createElement("span");
+            separator.classList.add("breadcrumb-separator");
+            separator.textContent = "/";
+            li.appendChild(separator);
+        }
+        breadcrumbList.appendChild(li);
+    });
+
+    console.log("Breadcrumb Update Completed");
+  }
+
+  // Make function available globally
+  window.updateBreadcrumb = updateBreadcrumb;
+  
+  // Set a global variable to notify other scripts the breadcrumb is ready
+  window.breadcrumbComponentLoaded = true;
+</script>
+
+<style>
+  /* Breadcrumb Styles */
+  .breadcrumb {
+    background-color: var(--light-bg);
+    position: fixed;
+    top: var(--nav-height);
+    left: 0;
+    right: 0;
+    z-index: 999;
+    height: var(--breadcrumb-height);
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+  }
+
+  .breadcrumb-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  .breadcrumb-list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+  }
+
+  .breadcrumb-item {
+    color: var(--light-text);
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+  }
+
+  .breadcrumb-item a {
+    color: var(--text-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .breadcrumb-item a:hover {
+    color: var(--accent-color);
+  }
+
+  .breadcrumb-separator {
+    color: var(--light-text);
+  }
+
+  .breadcrumb-item:last-child {
+    color: var(--accent-color);
+  }
+
+  .breadcrumb-item:last-child .breadcrumb-separator {
+    display: none;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .breadcrumb {
+      height: var(--breadcrumb-height);
+      top: var(--nav-height);
+    }
+
+    .breadcrumb-item {
+      font-size: 0.8rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .breadcrumb-container {
+      padding: 0 15px;
+    }
+  }
+</style>
